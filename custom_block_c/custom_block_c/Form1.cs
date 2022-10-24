@@ -32,11 +32,12 @@ namespace custom_block_c
         {
             Directory.CreateDirectory("../../../出力先");
             Directory.CreateDirectory("../../../出力先/blocks");
-            string filepash = "../../../出力先/blocks";
             Encoding enc = Encoding.UTF8;
             string name_space = ns_tb.Text;
             string block_name = bn_tb.Text;
             string block_id = $"{name_space}:{block_name}";
+            string filepash = $"../../../出力先/blocks/{block_name}.json";
+            using (FileStream fs_b = File.Create(filepash));
             StreamReader sr_od_b = new StreamReader("original_data/block.json");
             string od_b = sr_od_b.ReadToEnd();
             sr_od_b.Close();

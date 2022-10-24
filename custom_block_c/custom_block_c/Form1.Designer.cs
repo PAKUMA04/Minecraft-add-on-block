@@ -33,22 +33,23 @@
             this.ns_t = new System.Windows.Forms.Label();
             this.ns_tb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // bn_tb
             // 
-            this.bn_tb.Location = new System.Drawing.Point(304, 6);
+            this.bn_tb.Location = new System.Drawing.Point(507, 9);
+            this.bn_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.bn_tb.Name = "bn_tb";
-            this.bn_tb.Size = new System.Drawing.Size(172, 19);
+            this.bn_tb.Size = new System.Drawing.Size(284, 25);
             this.bn_tb.TabIndex = 1;
             // 
             // bn_t
             // 
             this.bn_t.AutoSize = true;
-            this.bn_t.Location = new System.Drawing.Point(248, 13);
+            this.bn_t.Location = new System.Drawing.Point(413, 20);
+            this.bn_t.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.bn_t.Name = "bn_t";
-            this.bn_t.Size = new System.Drawing.Size(50, 12);
+            this.bn_t.Size = new System.Drawing.Size(75, 18);
             this.bn_t.TabIndex = 2;
             this.bn_t.Text = "ブロック名";
             this.bn_t.Click += new System.EventHandler(this.label1_Click);
@@ -56,40 +57,44 @@
             // ns_t
             // 
             this.ns_t.AutoSize = true;
-            this.ns_t.Location = new System.Drawing.Point(245, 40);
+            this.ns_t.Location = new System.Drawing.Point(408, 60);
+            this.ns_t.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ns_t.Name = "ns_t";
-            this.ns_t.Size = new System.Drawing.Size(53, 12);
+            this.ns_t.Size = new System.Drawing.Size(80, 18);
             this.ns_t.TabIndex = 3;
             this.ns_t.Text = "名前空間";
             this.ns_t.Click += new System.EventHandler(this.bi_text_Click);
             // 
             // ns_tb
             // 
-            this.ns_tb.Location = new System.Drawing.Point(304, 33);
+            this.ns_tb.Location = new System.Drawing.Point(507, 50);
+            this.ns_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ns_tb.Name = "ns_tb";
-            this.ns_tb.Size = new System.Drawing.Size(172, 19);
+            this.ns_tb.Size = new System.Drawing.Size(284, 25);
             this.ns_tb.TabIndex = 4;
             // 
             // button1
             // 
             this.button1.Image = global::custom_block_c.Properties.Resources.comp_button;
-            this.button1.Location = new System.Drawing.Point(276, 398);
+            this.button1.Location = new System.Drawing.Point(460, 597);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 40);
+            this.button1.Size = new System.Drawing.Size(333, 60);
             this.button1.TabIndex = 5;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1333, 747);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ns_tb);
             this.Controls.Add(this.ns_t);
             this.Controls.Add(this.bn_t);
             this.Controls.Add(this.bn_tb);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -103,7 +108,6 @@
         private System.Windows.Forms.Label ns_t;
         private System.Windows.Forms.TextBox ns_tb;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

@@ -1,0 +1,24 @@
+﻿{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "iii:kk"
+    },
+    "components": {
+      "minecraft:loot": "loot_tables/blocks/kk_loot.json",
+      "minecraft:unit_cube": {},
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "block_tex",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destroy_time": 1,
+      "minecraft:explosion_resistance": 1,
+      "minecraft:friction": 0.5,
+      "minecraft:map_color": "#a6a6a6",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0
+    }
+  }
+}
