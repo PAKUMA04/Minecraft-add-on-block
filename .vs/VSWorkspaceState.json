@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\custom_block_c",
-    "\\custom_block_c\\custom_block_c"
+    "\\custom_block_c\\custom_block_c",
+    "\\custom_block_c\\custom_block_c\\bin"
   ],
-  "SelectedNode": "\\custom_block_c\\custom_block_c\\Form1.cs",
+  "SelectedNode": "\\custom_block_c\\custom_block_c\\Form1.Designer.cs",
   "PreviewInSolutionExplorer": false
 }
