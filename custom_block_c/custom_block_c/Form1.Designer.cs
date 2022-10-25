@@ -1,6 +1,6 @@
 ﻿namespace custom_block_c
 {
-    partial class Form1
+    partial class main_f
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -32,7 +32,8 @@
             this.bn_t = new System.Windows.Forms.Label();
             this.ns_t = new System.Windows.Forms.Label();
             this.ns_tb = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.kb_btn = new System.Windows.Forms.Button();
+            this.done_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bn_tb
@@ -73,30 +74,43 @@
             this.ns_tb.Size = new System.Drawing.Size(284, 25);
             this.ns_tb.TabIndex = 4;
             // 
-            // button1
+            // kb_btn
             // 
-            this.button1.Image = global::custom_block_c.Properties.Resources.comp_button;
-            this.button1.Location = new System.Drawing.Point(460, 597);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(333, 60);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.kb_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.kb_btn.BackgroundImage = global::custom_block_c.Properties.Resources.kb_btn;
+            this.kb_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.kb_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.kb_btn.Location = new System.Drawing.Point(980, 86);
+            this.kb_btn.Name = "kb_btn";
+            this.kb_btn.Size = new System.Drawing.Size(128, 128);
+            this.kb_btn.TabIndex = 6;
+            this.kb_btn.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // done_btn
+            // 
+            this.done_btn.Image = global::custom_block_c.Properties.Resources.comp_button;
+            this.done_btn.Location = new System.Drawing.Point(507, 567);
+            this.done_btn.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.done_btn.Name = "done_btn";
+            this.done_btn.Size = new System.Drawing.Size(200, 40);
+            this.done_btn.TabIndex = 5;
+            this.done_btn.UseVisualStyleBackColor = true;
+            this.done_btn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // main_f
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1333, 747);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1178, 744);
+            this.Controls.Add(this.kb_btn);
+            this.Controls.Add(this.done_btn);
             this.Controls.Add(this.ns_tb);
             this.Controls.Add(this.ns_t);
             this.Controls.Add(this.bn_t);
             this.Controls.Add(this.bn_tb);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "main_f";
+            this.Text = "MinecraftBE カスタムブロック生成";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +121,8 @@
         private System.Windows.Forms.Label bn_t;
         private System.Windows.Forms.Label ns_t;
         private System.Windows.Forms.TextBox ns_tb;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button done_btn;
+        private System.Windows.Forms.Button kb_btn;
     }
 }
 

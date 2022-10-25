@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace custom_block_c
 {
-    public partial class Form1 : Form
+    public partial class main_f : Form
     {
-        public Form1()
+        public main_f()
         {
             InitializeComponent();
         }
