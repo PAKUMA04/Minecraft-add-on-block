@@ -2,10 +2,10 @@
   "format_version": "1.16.0",
   "minecraft:block": {
     "description": {
-      "identifier": "iii:kk"
+      "identifier": ":"
     },
     "components": {
-      "minecraft:loot": "loot_tables/blocks/kk_loot.json",
+      "minecraft:loot": "loot_tables/blocks/_loot.json",
       "minecraft:unit_cube": {},
       "minecraft:material_instances": {
         "*": {

@@ -50,5 +50,15 @@ namespace custom_block_c
             writer.WriteLine(block_json);
             writer.Close();
         }
+
+        private void main_f_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

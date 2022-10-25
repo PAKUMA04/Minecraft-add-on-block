@@ -81,13 +81,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ブロック生成.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\知恵の本.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\kb_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\done_btn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

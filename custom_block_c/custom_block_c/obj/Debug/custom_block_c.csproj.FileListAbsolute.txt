@@ -10,7 +10,6 @@ D:\88100\開発中\custom_block_c\custom_block_c\obj\Debug\custom_block_c.csproj
 D:\88100\開発中\custom_block_c\custom_block_c\obj\Debug\custom_block_c.exe
 D:\88100\開発中\custom_block_c\custom_block_c\obj\Debug\custom_block_c.pdb
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.csproj.AssemblyReference.cache
-C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.Form1.resources
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.Properties.Resources.resources
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.csproj.GenerateResource.cache
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.csproj.CoreCompileInputs.cache
@@ -19,3 +18,4 @@ C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\bin\Debug\custom_block_c.exe.config
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\bin\Debug\custom_block_c.exe
 C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\bin\Debug\custom_block_c.pdb
+C:\Users\22S1018\Desktop\ブロック生成\Minecraft-add-on-block\custom_block_c\custom_block_c\obj\Debug\custom_block_c.main_f.resources
