@@ -36,6 +36,7 @@ namespace custom_block_c
             string name_space = ns_tb.Text;
             string block_name = bn_tb.Text;
             string block_id = $"{name_space}:{block_name}";
+            string block_le = le_l.Text;
             string filepash = $"../../../出力先/blocks/{block_name}.json";
             using (FileStream fs_b = File.Create(filepash));
             StreamReader sr_od_b = new StreamReader("original_data/block.json");
@@ -61,14 +62,9 @@ namespace custom_block_c
 
         }
 
-        private void kb_btn_Click(object sender, EventArgs e)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void kb_btn(object sender, MouseEventArgs e)
-        {
-            
         }
     }
 }
