@@ -13,12 +13,12 @@
           "render_method": "opaque"
         }
       },
-      "minecraft:destroy_time": "block_dt",
-      "minecraft:explosion_resistance": "block_er",
+      "minecraft:destroy_time": block_dt,
+      "minecraft:explosion_resistance": block_er,
       "minecraft:friction": 0.5,
       "minecraft:map_color": "#a6a6a6",
       "minecraft:block_light_absorption": 0,
-      "minecraft:block_light_emission": "block_le"
+      "minecraft:block_light_emission": block_le
     }
   }
 }
