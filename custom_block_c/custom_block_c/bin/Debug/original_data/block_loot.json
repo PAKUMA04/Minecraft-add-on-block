@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "tyoe": "item",
+          "name": "block_id",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

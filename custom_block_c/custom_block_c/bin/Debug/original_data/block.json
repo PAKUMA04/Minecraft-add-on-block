@@ -1,5 +1,5 @@
 {
-  "format_version": "1.19.10",
+  "format_version": "1.16.0",
   "minecraft:block": {
     "description": {
       "identifier": "block_id"
@@ -13,14 +13,12 @@
           "render_method": "opaque"
         }
       },
-      "minecraft:light_emission": block_le,
-      "minecraft:destructible_by_mining": {
-        "seconds_to_destroy": block_dt,
-        "minecraft:explosion_resistance": block_er,
-        "minecraft:friction": 0.5,
-        "minecraft:map_color": "#a6a6a6",
-        "minecraft:block_light_absorption": 0,
-        "minecraft:block_light_emission": 0
-      }
+      "minecraft:destroy_time": "block_dt",
+      "minecraft:explosion_resistance": "block_er",
+      "minecraft:friction": 0.5,
+      "minecraft:map_color": "#a6a6a6",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": "block_le"
+    }
   }
 }

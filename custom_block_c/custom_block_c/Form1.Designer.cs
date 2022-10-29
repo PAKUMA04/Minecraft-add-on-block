@@ -1,4 +1,6 @@
-﻿namespace custom_block_c
+﻿using System.Windows.Forms;
+
+namespace custom_block_c
 {
     partial class main_f
     {
@@ -32,8 +34,6 @@
             this.bn_l = new System.Windows.Forms.Label();
             this.ns_l = new System.Windows.Forms.Label();
             this.ns_tb = new System.Windows.Forms.TextBox();
-            this.logo = new System.Windows.Forms.PictureBox();
-            this.done_btn = new System.Windows.Forms.Button();
             this.dt_nud = new System.Windows.Forms.NumericUpDown();
             this.dt_l = new System.Windows.Forms.Label();
             this.le_nud = new System.Windows.Forms.NumericUpDown();
@@ -42,10 +42,22 @@
             this.er_l = new System.Windows.Forms.Label();
             this.f_clb = new System.Windows.Forms.CheckedListBox();
             this.f_l = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.bt_tb = new System.Windows.Forms.TextBox();
+            this.bt_l = new System.Windows.Forms.Label();
+            this.tn_tb = new System.Windows.Forms.TextBox();
+            this.folder_btn = new System.Windows.Forms.Button();
+            this.block_tex = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.done_btn = new System.Windows.Forms.Button();
+            this.folder_tb = new System.Windows.Forms.TextBox();
+            this.folder_l = new System.Windows.Forms.Label();
+            this.tl_tb = new System.Windows.Forms.TextBox();
+            this.tl_l = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block_tex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // bn_tb
@@ -53,10 +65,10 @@
             this.bn_tb.BackColor = System.Drawing.Color.Gray;
             this.bn_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bn_tb.ForeColor = System.Drawing.Color.White;
-            this.bn_tb.Location = new System.Drawing.Point(350, 217);
+            this.bn_tb.Location = new System.Drawing.Point(350, 204);
             this.bn_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.bn_tb.Name = "bn_tb";
-            this.bn_tb.Size = new System.Drawing.Size(300, 27);
+            this.bn_tb.Size = new System.Drawing.Size(300, 21);
             this.bn_tb.TabIndex = 1;
             // 
             // bn_l
@@ -64,13 +76,12 @@
             this.bn_l.BackColor = System.Drawing.Color.Transparent;
             this.bn_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bn_l.ForeColor = System.Drawing.Color.White;
-            this.bn_l.Location = new System.Drawing.Point(265, 223);
+            this.bn_l.Location = new System.Drawing.Point(265, 207);
             this.bn_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.bn_l.Name = "bn_l";
             this.bn_l.Size = new System.Drawing.Size(84, 20);
             this.bn_l.TabIndex = 2;
             this.bn_l.Text = "ブロック名";
-            this.bn_l.Click += new System.EventHandler(this.label1_Click);
             // 
             // ns_l
             // 
@@ -78,13 +89,12 @@
             this.ns_l.BackColor = System.Drawing.Color.Transparent;
             this.ns_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ns_l.ForeColor = System.Drawing.Color.White;
-            this.ns_l.Location = new System.Drawing.Point(260, 253);
+            this.ns_l.Location = new System.Drawing.Point(260, 236);
             this.ns_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ns_l.Name = "ns_l";
-            this.ns_l.Size = new System.Drawing.Size(89, 20);
+            this.ns_l.Size = new System.Drawing.Size(63, 14);
             this.ns_l.TabIndex = 3;
             this.ns_l.Text = "名前空間";
-            this.ns_l.Click += new System.EventHandler(this.bi_text_Click);
             // 
             // ns_tb
             // 
@@ -93,39 +103,11 @@
             this.ns_tb.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.ns_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ns_tb.ForeColor = System.Drawing.Color.White;
-            this.ns_tb.Location = new System.Drawing.Point(350, 250);
+            this.ns_tb.Location = new System.Drawing.Point(350, 233);
             this.ns_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ns_tb.Name = "ns_tb";
-            this.ns_tb.Size = new System.Drawing.Size(300, 27);
+            this.ns_tb.Size = new System.Drawing.Size(300, 21);
             this.ns_tb.TabIndex = 4;
-            // 
-            // logo
-            // 
-            this.logo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.logo.Image = global::custom_block_c.Properties.Resources.logo;
-            this.logo.Location = new System.Drawing.Point(150, 0);
-            this.logo.Margin = new System.Windows.Forms.Padding(0);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(600, 200);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logo.TabIndex = 7;
-            this.logo.TabStop = false;
-            this.logo.Click += new System.EventHandler(this.logo_Click);
-            // 
-            // done_btn
-            // 
-            this.done_btn.BackgroundImage = global::custom_block_c.Properties.Resources.done_btn;
-            this.done_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.done_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.done_btn.Location = new System.Drawing.Point(350, 490);
-            this.done_btn.Margin = new System.Windows.Forms.Padding(0);
-            this.done_btn.Name = "done_btn";
-            this.done_btn.Size = new System.Drawing.Size(200, 40);
-            this.done_btn.TabIndex = 5;
-            this.done_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.done_btn.UseVisualStyleBackColor = true;
-            this.done_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // dt_nud
             // 
@@ -133,14 +115,14 @@
             this.dt_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dt_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dt_nud.ForeColor = System.Drawing.Color.White;
-            this.dt_nud.Location = new System.Drawing.Point(350, 284);
+            this.dt_nud.Location = new System.Drawing.Point(350, 288);
             this.dt_nud.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.dt_nud.Name = "dt_nud";
-            this.dt_nud.Size = new System.Drawing.Size(100, 27);
+            this.dt_nud.Size = new System.Drawing.Size(100, 21);
             this.dt_nud.TabIndex = 8;
             // 
             // dt_l
@@ -148,7 +130,7 @@
             this.dt_l.BackColor = System.Drawing.Color.Transparent;
             this.dt_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dt_l.ForeColor = System.Drawing.Color.White;
-            this.dt_l.Location = new System.Drawing.Point(260, 286);
+            this.dt_l.Location = new System.Drawing.Point(260, 290);
             this.dt_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.dt_l.Name = "dt_l";
             this.dt_l.Size = new System.Drawing.Size(89, 20);
@@ -161,14 +143,14 @@
             this.le_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.le_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.le_nud.ForeColor = System.Drawing.Color.White;
-            this.le_nud.Location = new System.Drawing.Point(550, 284);
+            this.le_nud.Location = new System.Drawing.Point(550, 288);
             this.le_nud.Maximum = new decimal(new int[] {
             15,
             0,
             0,
             0});
             this.le_nud.Name = "le_nud";
-            this.le_nud.Size = new System.Drawing.Size(100, 27);
+            this.le_nud.Size = new System.Drawing.Size(100, 21);
             this.le_nud.TabIndex = 10;
             // 
             // le_l
@@ -176,7 +158,7 @@
             this.le_l.BackColor = System.Drawing.Color.Transparent;
             this.le_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.le_l.ForeColor = System.Drawing.Color.White;
-            this.le_l.Location = new System.Drawing.Point(458, 286);
+            this.le_l.Location = new System.Drawing.Point(461, 290);
             this.le_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.le_l.Name = "le_l";
             this.le_l.Size = new System.Drawing.Size(89, 20);
@@ -189,14 +171,14 @@
             this.er_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.er_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.er_nud.ForeColor = System.Drawing.Color.White;
-            this.er_nud.Location = new System.Drawing.Point(350, 317);
+            this.er_nud.Location = new System.Drawing.Point(350, 315);
             this.er_nud.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.er_nud.Name = "er_nud";
-            this.er_nud.Size = new System.Drawing.Size(100, 27);
+            this.er_nud.Size = new System.Drawing.Size(100, 21);
             this.er_nud.TabIndex = 12;
             // 
             // er_l
@@ -204,7 +186,7 @@
             this.er_l.BackColor = System.Drawing.Color.Transparent;
             this.er_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.er_l.ForeColor = System.Drawing.Color.White;
-            this.er_l.Location = new System.Drawing.Point(260, 319);
+            this.er_l.Location = new System.Drawing.Point(260, 317);
             this.er_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.er_l.Name = "er_l";
             this.er_l.Size = new System.Drawing.Size(89, 20);
@@ -222,29 +204,165 @@
             "なし(普通)",
             "加速(氷)",
             "減速(ソウルサンド)"});
-            this.f_clb.Location = new System.Drawing.Point(350, 350);
+            this.f_clb.Location = new System.Drawing.Point(350, 342);
             this.f_clb.Name = "f_clb";
-            this.f_clb.Size = new System.Drawing.Size(182, 76);
+            this.f_clb.Size = new System.Drawing.Size(166, 52);
             this.f_clb.TabIndex = 16;
-            this.f_clb.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.f_clb.Visible = false;
             // 
             // f_l
             // 
             this.f_l.BackColor = System.Drawing.Color.Transparent;
             this.f_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.f_l.ForeColor = System.Drawing.Color.White;
-            this.f_l.Location = new System.Drawing.Point(260, 350);
+            this.f_l.Location = new System.Drawing.Point(260, 342);
             this.f_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.f_l.Name = "f_l";
             this.f_l.Size = new System.Drawing.Size(89, 20);
             this.f_l.TabIndex = 17;
             this.f_l.Text = "表面摩擦";
+            this.f_l.Visible = false;
+            // 
+            // bt_tb
+            // 
+            this.bt_tb.Location = new System.Drawing.Point(809, 511);
+            this.bt_tb.Name = "bt_tb";
+            this.bt_tb.Size = new System.Drawing.Size(100, 19);
+            this.bt_tb.TabIndex = 19;
+            this.bt_tb.UseWaitCursor = true;
+            this.bt_tb.Visible = false;
+            // 
+            // bt_l
+            // 
+            this.bt_l.AllowDrop = true;
+            this.bt_l.AutoSize = true;
+            this.bt_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.bt_l.ForeColor = System.Drawing.Color.White;
+            this.bt_l.Location = new System.Drawing.Point(670, 220);
+            this.bt_l.Name = "bt_l";
+            this.bt_l.Size = new System.Drawing.Size(59, 14);
+            this.bt_l.TabIndex = 20;
+            this.bt_l.Text = "テクスチャ";
+            // 
+            // tn_tb
+            // 
+            this.tn_tb.Location = new System.Drawing.Point(809, 530);
+            this.tn_tb.Name = "tn_tb";
+            this.tn_tb.Size = new System.Drawing.Size(100, 19);
+            this.tn_tb.TabIndex = 21;
+            this.tn_tb.Visible = false;
+            // 
+            // folder_btn
+            // 
+            this.folder_btn.BackColor = System.Drawing.Color.Gray;
+            this.folder_btn.BackgroundImage = global::custom_block_c.Properties.Resources.file_btn;
+            this.folder_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.folder_btn.Location = new System.Drawing.Point(312, 438);
+            this.folder_btn.Name = "folder_btn";
+            this.folder_btn.Size = new System.Drawing.Size(32, 32);
+            this.folder_btn.TabIndex = 22;
+            this.folder_btn.UseVisualStyleBackColor = false;
+            this.folder_btn.Click += new System.EventHandler(this.file_btn_Click);
+            // 
+            // block_tex
+            // 
+            this.block_tex.BackColor = System.Drawing.Color.Gray;
+            this.block_tex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.block_tex.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.block_tex.Location = new System.Drawing.Point(673, 237);
+            this.block_tex.Name = "block_tex";
+            this.block_tex.Size = new System.Drawing.Size(80, 80);
+            this.block_tex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.block_tex.TabIndex = 18;
+            this.block_tex.TabStop = false;
+            this.block_tex.DragDrop += new System.Windows.Forms.DragEventHandler(this.block_tex_DragDrop);
+            this.block_tex.DragEnter += new System.Windows.Forms.DragEventHandler(this.block_tex_DragEnter);
+            // 
+            // logo
+            // 
+            this.logo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.logo.Image = global::custom_block_c.Properties.Resources.logo;
+            this.logo.Location = new System.Drawing.Point(153, 0);
+            this.logo.Margin = new System.Windows.Forms.Padding(0);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(600, 200);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logo.TabIndex = 7;
+            this.logo.TabStop = false;
+            // 
+            // done_btn
+            // 
+            this.done_btn.BackgroundImage = global::custom_block_c.Properties.Resources.done_btn;
+            this.done_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.done_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.done_btn.Location = new System.Drawing.Point(350, 490);
+            this.done_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.done_btn.Name = "done_btn";
+            this.done_btn.Size = new System.Drawing.Size(200, 40);
+            this.done_btn.TabIndex = 5;
+            this.done_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.done_btn.UseVisualStyleBackColor = true;
+            this.done_btn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // folder_tb
+            // 
+            this.folder_tb.BackColor = System.Drawing.Color.Gray;
+            this.folder_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.folder_tb.ForeColor = System.Drawing.Color.White;
+            this.folder_tb.Location = new System.Drawing.Point(350, 444);
+            this.folder_tb.Name = "folder_tb";
+            this.folder_tb.Size = new System.Drawing.Size(300, 21);
+            this.folder_tb.TabIndex = 23;
+            // 
+            // folder_l
+            // 
+            this.folder_l.AutoSize = true;
+            this.folder_l.BackColor = System.Drawing.Color.Transparent;
+            this.folder_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.folder_l.ForeColor = System.Drawing.Color.White;
+            this.folder_l.Location = new System.Drawing.Point(260, 447);
+            this.folder_l.Name = "folder_l";
+            this.folder_l.Size = new System.Drawing.Size(49, 14);
+            this.folder_l.TabIndex = 24;
+            this.folder_l.Text = "保存先";
+            // 
+            // tl_tb
+            // 
+            this.tl_tb.BackColor = System.Drawing.Color.Gray;
+            this.tl_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.tl_tb.ForeColor = System.Drawing.Color.White;
+            this.tl_tb.Location = new System.Drawing.Point(350, 261);
+            this.tl_tb.Name = "tl_tb";
+            this.tl_tb.Size = new System.Drawing.Size(300, 21);
+            this.tl_tb.TabIndex = 25;
+            // 
+            // tl_l
+            // 
+            this.tl_l.AutoSize = true;
+            this.tl_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.tl_l.ForeColor = System.Drawing.Color.White;
+            this.tl_l.Location = new System.Drawing.Point(265, 264);
+            this.tl_l.Name = "tl_l";
+            this.tl_l.Size = new System.Drawing.Size(49, 14);
+            this.tl_l.TabIndex = 26;
+            this.tl_l.Text = "表示名";
             // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(878, 544);
+            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.tl_l);
+            this.Controls.Add(this.tl_tb);
+            this.Controls.Add(this.folder_l);
+            this.Controls.Add(this.folder_tb);
+            this.Controls.Add(this.folder_btn);
+            this.Controls.Add(this.tn_tb);
+            this.Controls.Add(this.bt_l);
+            this.Controls.Add(this.bt_tb);
+            this.Controls.Add(this.block_tex);
             this.Controls.Add(this.f_l);
             this.Controls.Add(this.f_clb);
             this.Controls.Add(this.er_l);
@@ -260,13 +378,15 @@
             this.Controls.Add(this.bn_l);
             this.Controls.Add(this.bn_tb);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
             this.Name = "main_f";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Minecraft BE カスタムブロックジェネレーター";
-            this.Load += new System.EventHandler(this.main_f_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block_tex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +407,15 @@
         private System.Windows.Forms.Label er_l;
         private System.Windows.Forms.CheckedListBox f_clb;
         private System.Windows.Forms.Label f_l;
+        private System.Windows.Forms.PictureBox block_tex;
+        private TextBox bt_tb;
+        private Label bt_l;
+        private TextBox tn_tb;
+        private Button folder_btn;
+        private TextBox folder_tb;
+        private Label folder_l;
+        private TextBox tl_tb;
+        private Label tl_l;
     }
 }
 
