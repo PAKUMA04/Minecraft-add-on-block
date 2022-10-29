@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -26,8 +27,9 @@ namespace custom_block_c
         {
             string fp_folder = folder_tb.Text;
             Directory.CreateDirectory($"{fp_folder}/custom_block");
-            string fp_beh = $"{fp_folder}/custom_block/behavior";
-            string fp_res = $"{fp_folder}/custom_block/resource";
+            string pack_name = pn_tb.Text;
+            string fp_beh = $"{fp_folder}/custom_block/{pack_name}_b";
+            string fp_res = $"{fp_folder}/custom_block/{pack_name}_r";
             Directory.CreateDirectory(fp_beh);
             Directory.CreateDirectory($"{fp_beh}/blocks");
             Directory.CreateDirectory($"{fp_beh}/loot_tables");
@@ -55,7 +57,6 @@ namespace custom_block_c
                 File.Copy($@"{fp_t}", $@"{fp_bt}");
             }
             string fp_b = $"{fp_beh}/blocks/{block_name}.json";
-            string pack_name = pn_tb.Text;
             string pack_desc = pd_tb.Text;
             string pack_ver = pv_nud.Text;
             string fp_od_pi = pi_tb.Text;
@@ -113,7 +114,6 @@ namespace custom_block_c
                 using (FileStream fs_tj = File.Create(fp_tj)) ;
                 string tex_tj = $"\"}},\n    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";
                 System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
-                sb_tj.Replace("name_space", $"{name_space}");
                 sb_tj.Replace("\"}\n  }", $"{tex_tj}");
                 string texture_json = sb_tj.ToString();
                 StreamWriter tj_w = new StreamWriter(fp_tj, true);
@@ -128,7 +128,7 @@ namespace custom_block_c
                 sr_od_tj.Close();
                 string tex_tj = $"    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";
                 System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
-                sb_tj.Replace("name_space", $"{name_space}");
+                sb_tj.Replace("pack_name", $"{pack_name}");
                 sb_tj.Replace("  }", $"{tex_tj}");
                 string texture_json = sb_tj.ToString();
                 StreamWriter tj_w = new StreamWriter(fp_tj, true);
