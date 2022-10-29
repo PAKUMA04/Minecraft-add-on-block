@@ -20,6 +20,7 @@ namespace custom_block_c
         {
             InitializeComponent();
             block_tex.AllowDrop = true;
+            pi_pb.AllowDrop = true;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,6 +55,28 @@ namespace custom_block_c
                 File.Copy($@"{fp_t}", $@"{fp_bt}");
             }
             string fp_b = $"{fp_beh}/blocks/{block_name}.json";
+            string pack_name = pn_tb.Text;
+            string pack_desc = pd_tb.Text;
+            string pack_ver = pv_nud.Text;
+            string fp_od_pi = pi_tb.Text;
+            string fp_pi_b = $"{fp_beh}\\pack_icon.png";
+            if (System.IO.File.Exists(fp_pi_b))
+            {
+                Message message1 = new Message();
+            }
+            else
+            {
+                File.Copy($@"{fp_od_pi}", $@"{fp_pi_b}");
+            }
+            string fp_pi_r = $"{fp_res}\\pack_icon.png";
+            if (System.IO.File.Exists(fp_pi_r))
+            {
+                Message message2 = new Message();
+            }
+            else
+            {
+                File.Copy($@"{fp_od_pi}", $@"{fp_pi_r}");
+            }
             using (FileStream fs_b = File.Create(fp_b)) ;
             StreamReader sr_od_b = new StreamReader("original_data/block.json");
             string od_b = sr_od_b.ReadToEnd();
@@ -66,9 +89,9 @@ namespace custom_block_c
             sb_b.Replace("block_dt", $"{block_dt}");
             sb_b.Replace("block_er", $"{block_er}");
             string block_json = sb_b.ToString();
-            StreamWriter bj_w = new StreamWriter(fp_b,true);
-            bj_w.Write(block_json);
-            bj_w.Close();
+            StreamWriter sw_bj = new StreamWriter(fp_b,true);
+            sw_bj.Write(block_json);
+            sw_bj.Close();
             string fp_l = $"{fp_beh}/loot_tables/{block_name}_loot.json";
             using (FileStream fs_l = File.Create(fp_l)) ;
             StreamReader sr_od_l = new StreamReader("original_data/block_loot.json");
@@ -77,9 +100,9 @@ namespace custom_block_c
             System.Text.StringBuilder sb_l = new System.Text.StringBuilder(od_l);
             sb_l.Replace("block_id", $"{block_id}");
             string loot_json = sb_l.ToString();
-            StreamWriter lj_w = new StreamWriter(fp_l, true);
-            lj_w.Write(loot_json);
-            lj_w.Close();
+            StreamWriter sw_lj = new StreamWriter(fp_l, true);
+            sw_lj.Write(loot_json);
+            sw_lj.Close();
             string fp_tj = $"{fp_res}/textures/terrain_texture.json";
             if (System.IO.File.Exists(fp_tj))
             {
@@ -126,6 +149,43 @@ namespace custom_block_c
                 tl_w.Write($"tile.{block_id}.name = {block_tl}");
                 tl_w.Close();
             }
+            string fp_mb = $"{fp_beh}/manifest.json";
+            using (FileStream fs_mb = File.Create(fp_mb)) ;
+            Guid uuid_1 = Guid.NewGuid();
+            string uuid_1_b = uuid_1.ToString();
+            Guid uuid_2 = Guid.NewGuid();
+            string uuid_2_b = uuid_2.ToString();
+            StreamReader sr_od_mb = new StreamReader("original_data/manifest_b.json");
+            string od_mb = sr_od_mb.ReadToEnd();
+            System.Text.StringBuilder sb_mb = new System.Text.StringBuilder(od_mb);
+            sb_mb.Replace("pack_name", $"{pack_name}");
+            sb_mb.Replace("pack_desc",$"{pack_desc}");
+            sb_mb.Replace("pack_ver", $"{pack_ver}");
+            sb_mb.Replace("uuid_1", $"{uuid_1_b}");
+            sb_mb.Replace("uuid_2", $"{uuid_2_b}");
+            string manifest_beh = sb_mb.ToString();
+            StreamWriter sw_mb = new StreamWriter(fp_mb, true);
+            sw_mb.Write(manifest_beh);
+            sw_mb.Close();
+            string fp_mr = $"{fp_res}/manifest.json";
+            using (FileStream fs_mr = File.Create(fp_mr)) ;
+            Guid uuid_3 = Guid.NewGuid();
+            string uuid_1_r = uuid_3.ToString();
+            Guid uuid_4 = Guid.NewGuid();
+            string uuid_2_r = uuid_4.ToString();
+            StreamReader sr_od_mr = new StreamReader("original_data/manifest_r.json");
+            string od_mr = sr_od_mr.ReadToEnd();
+            System.Text.StringBuilder sb_mr = new System.Text.StringBuilder(od_mr);
+            sb_mr.Replace("pack_name", $"{pack_name}");
+            sb_mr.Replace("pack_desc", $"{pack_desc}");
+            sb_mr.Replace("pack_ver", $"{pack_ver}");
+            sb_mr.Replace("uuid_1", $"{uuid_1_r}");
+            sb_mr.Replace("uuid_2", $"{uuid_2_r}");
+            string manifest_res = sb_mr.ToString();
+            StreamWriter sw_mr = new StreamWriter(fp_mr, true);
+            sw_mr.Write(manifest_res);
+            sw_mr.Close();
+            MessageBox.Show("ブロックファイルが生成されました","ファイル生成", MessageBoxButtons.OK);
         }
         private void block_tex_DragEnter(object sender, DragEventArgs e)
         {
@@ -134,13 +194,11 @@ namespace custom_block_c
             else
                 e.Effect = DragDropEffects.None;
         }
-
         private void block_tex_DragDrop(object sender, DragEventArgs e)
         {
             string fileName = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            // １、２どちらでもよい
-            block_tex.ImageLocation = fileName;//１
-            block_tex.Image = new Bitmap(fileName);//２
+            block_tex.ImageLocation = fileName;
+            block_tex.Image = new Bitmap(fileName);
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             for (int i = 0; i < files.Length; i++)
             {
@@ -149,7 +207,25 @@ namespace custom_block_c
                 tn_tb.Text = Path.GetFileNameWithoutExtension(texpash);
             }
         }
-
+        private void pi_pb_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+        private void pi_pb_DragDrop(object sender, DragEventArgs e)
+        {
+            string pi_fn = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            pi_pb.ImageLocation = pi_fn;
+            pi_pb.Image = new Bitmap(pi_fn);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            for (int i = 0; i < files.Length; i++)
+            {
+                string pipash = files[i];
+                pi_tb.Text = pipash;
+            }
+        }
         private void file_btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
