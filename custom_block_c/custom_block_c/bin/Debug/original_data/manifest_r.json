@@ -3,14 +3,14 @@
   "header": {
     "description": "pack_desc",
     "name": "pack_name_r",
-    "uuid": "uuid_1",
+    "uuid": "uuid_1_r",
     "version": [0, 0, pack_ver]
   },
   "modules": [
     {
       "description": "pack_desc",
       "type": "resources",
-      "uuid": "uuid_2",
+      "uuid": "uuid_2_r",
       "version": [0, 0, pack_ver]
     }
   ]

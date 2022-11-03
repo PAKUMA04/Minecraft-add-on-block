@@ -1,0 +1,14 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "item_id"
+    },
+
+    "components": {
+      "minecraft:icon": {
+        "texture": "item_tex"
+      }
+    }
+  }
+}
