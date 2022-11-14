@@ -58,23 +58,6 @@ namespace custom_block_c
             {
                 File.Copy($@"{fp_t}", $@"{fp_bt}");
             }
-            //アイテム設定
-            string fp_rti = $"{fp_res}/textures/items";
-            Directory.CreateDirectory(fp_rti);
-            string item_name = in_tb.Text;
-            string item_id = $"{name_space}:{item_name}";
-            string item_tl = tl_tb.Text;
-            string item_tex = itn_tb.Text;
-            string fp_it = it_tb.Text;
-            string fp_itn = $"{fp_rti}\\{item_tex}.png";
-            if (System.IO.File.Exists(fp_itn))
-            {
-                Message message = new Message();
-            }
-            else
-            {
-                File.Copy($@"{fp_it}", $@"{fp_itn}");
-            }
             //manifest
             string pack_desc = pd_tb.Text;
             string pack_ver = pv_nud.Text;
@@ -173,6 +156,23 @@ namespace custom_block_c
                 sw_tl.Write($"tile.{block_id}.name={block_tl}");
                 sw_tl.Close();
             }
+            //アイテム設定
+            string fp_rti = $"{fp_res}/textures/items";
+            Directory.CreateDirectory(fp_rti);
+            string item_name = in_tb.Text;
+            string item_id = $"{name_space}:{item_name}";
+            string item_tl = tl_tb.Text;
+            string item_tex = itn_tb.Text;
+            string fp_it = it_tb.Text;
+            string fp_itn = $"{fp_rti}\\{item_tex}.png";
+            if (System.IO.File.Exists(fp_itn))
+            {
+                Message message = new Message();
+            }
+            else
+            {
+                File.Copy($@"{fp_it}", $@"{fp_itn}");
+            }
             //item.json生成
             string fp_i = $"{fp_beh}/items/{item_name}.json";
             using (FileStream fs_i = File.Create(fp_i)) ;
@@ -181,7 +181,7 @@ namespace custom_block_c
             sr_od_i.Close();
             System.Text.StringBuilder sb_i = new System.Text.StringBuilder(od_i);
             sb_i.Replace("item_id", $"{item_id}");
-            sb_i.Replace("item_tex",$"{item_tex}");
+            sb_i.Replace("item_tex", $"{item_tex}");
             string item_json = sb_i.ToString();
             StreamWriter sw_ij = new StreamWriter(fp_i, true);
             sw_ij.Write(item_json);
@@ -218,7 +218,7 @@ namespace custom_block_c
                 sw_itj.Write(item_tex_json);
                 sw_itj.Close();
             }
-            //アイテム名ja_JP.lang
+            //アイテム名 ja_JP.lang
             if (System.IO.File.Exists(fp_tl))
             {
                 StreamWriter sw_tl = new StreamWriter(fp_tl, true);
@@ -269,7 +269,7 @@ namespace custom_block_c
             StreamWriter sw_mr = new StreamWriter(fp_mr, true);
             sw_mr.Write(manifest_res);
             sw_mr.Close();
-            MessageBox.Show("ブロックファイルが生成されました","ファイル生成", MessageBoxButtons.OK);
+            MessageBox.Show("ファイルが生成されました","ファイル生成", MessageBoxButtons.OK);
         }
         private void block_tex_DragEnter(object sender, DragEventArgs e)
         {
