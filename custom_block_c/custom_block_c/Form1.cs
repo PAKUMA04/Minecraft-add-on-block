@@ -33,7 +33,6 @@ namespace custom_block_c
             string fp_res = $"{fp_folder}/custom_block/{pack_name}_r";
             Directory.CreateDirectory(fp_beh);
             Directory.CreateDirectory($"{fp_beh}/blocks");
-            Directory.CreateDirectory($"{fp_beh}/items");
             Directory.CreateDirectory($"{fp_beh}/loot_tables");
             Directory.CreateDirectory(fp_res);
             Directory.CreateDirectory($"{fp_res}/textures");
@@ -50,37 +49,29 @@ namespace custom_block_c
             string block_dt = dt_nud.Text;
             string block_er = er_nud.Text;
             string fp_bt = $"{fp_rtb}\\{tex_name}.png";
-            if (System.IO.File.Exists(fp_bt))
-            {
-                Message message = new Message();
-            }
-            else
+            if (System.IO.File.Exists(fp_bt) == false)
             {
                 File.Copy($@"{fp_t}", $@"{fp_bt}");
             }
+            //
             //manifest
+            //
             string pack_desc = pd_tb.Text;
             string pack_ver = pv_nud.Text;
             string fp_od_pi = pi_tb.Text;
             string fp_pi_b = $"{fp_beh}\\pack_icon.png";
-            if (System.IO.File.Exists(fp_pi_b))
-            {
-                Message message1 = new Message();
-            }
-            else
+            if (System.IO.File.Exists(fp_pi_b) == false)
             {
                 File.Copy($@"{fp_od_pi}", $@"{fp_pi_b}");
             }
             string fp_pi_r = $"{fp_res}\\pack_icon.png";
-            if (System.IO.File.Exists(fp_pi_r))
-            {
-                Message message2 = new Message();
-            }
-            else
+            if (System.IO.File.Exists(fp_pi_r) == false)
             {
                 File.Copy($@"{fp_od_pi}", $@"{fp_pi_r}");
             }
+            //
             //ブロックファイル生成
+            //
             string fp_b = $"{fp_beh}/blocks/{block_name}.json";
             using (FileStream fs_b = File.Create(fp_b)) ;
             StreamReader sr_od_b = new StreamReader("original_data/block.json");
@@ -97,7 +88,9 @@ namespace custom_block_c
             StreamWriter sw_bj = new StreamWriter(fp_b,true);
             sw_bj.Write(block_json);
             sw_bj.Close();
+            //
             //block_loot.json生成
+            //
             string fp_l = $"{fp_beh}/loot_tables/{block_name}_loot.json";
             using (FileStream fs_l = File.Create(fp_l)) ;
             StreamReader sr_od_l = new StreamReader("original_data/block_loot.json");
@@ -109,7 +102,9 @@ namespace custom_block_c
             StreamWriter sw_lj = new StreamWriter(fp_l, true);
             sw_lj.Write(loot_json);
             sw_lj.Close();
+            //
             //terrain_texture.jsonの編集
+            //
             string fp_tj = $"{fp_res}/textures/terrain_texture.json";
             if (System.IO.File.Exists(fp_tj))
             {
@@ -141,7 +136,9 @@ namespace custom_block_c
                 tj_w.Write(texture_json);
                 tj_w.Close();
             }
+            //
             //ブロック名ja_JP.lang
+            //
             string fp_tl = $"{fp_res}/texts/ja_JP.lang";
             if (System.IO.File.Exists(fp_tl))
             {
@@ -156,83 +153,80 @@ namespace custom_block_c
                 sw_tl.Write($"tile.{block_id}.name={block_tl}");
                 sw_tl.Close();
             }
-            //アイテム設定
-            string fp_rti = $"{fp_res}/textures/items";
-            Directory.CreateDirectory(fp_rti);
-            string item_name = in_tb.Text;
-            string item_id = $"{name_space}:{item_name}";
-            string item_tl = tl_tb.Text;
-            string item_tex = itn_tb.Text;
-            string fp_it = it_tb.Text;
-            string fp_itn = $"{fp_rti}\\{item_tex}.png";
-            if (System.IO.File.Exists(fp_itn))
+            if (is_cb.Checked == true) //アイテム
             {
-                Message message = new Message();
+                //
+                //アイテム設定
+                //
+                Directory.CreateDirectory($"{fp_beh}/items");
+                string fp_rti = $"{fp_res}/textures/items";
+                Directory.CreateDirectory(fp_rti);
+                string item_name = in_tb.Text;
+                string item_id = $"{name_space}:{item_name}";
+                string item_tex = itn_tb.Text;
+                string item_dn = idn_tb.Text;
+                string item_mss = mss_nud.Text;
+                string fp_it = it_tb.Text;
+                string fp_itn = $"{fp_rti}\\{item_tex}.png";
+                if (System.IO.File.Exists(fp_itn) == false)
+                {
+                    File.Copy($@"{fp_it}", $@"{fp_itn}");
+                }
+                //
+                //item.json生成
+                //
+                string fp_i = $"{fp_beh}/items/{item_name}.json";
+                using (FileStream fs_i = File.Create(fp_i)) ;
+                StreamReader sr_od_i = new StreamReader("original_data/item.json");
+                string od_i = sr_od_i.ReadToEnd();
+                sr_od_i.Close();
+                System.Text.StringBuilder sb_i = new System.Text.StringBuilder(od_i);
+                sb_i.Replace("item_id", $"{item_id}");
+                sb_i.Replace("item_tex", $"{item_tex}");
+                sb_i.Replace("item_dn", $"{item_dn}");
+                sb_i.Replace("item_mss", $"{item_mss}");
+                string item_json = sb_i.ToString();
+                StreamWriter sw_ij = new StreamWriter(fp_i, true);
+                sw_ij.Write(item_json);
+                sw_ij.Close();
+                //
+                //item_texture.json編集
+                //
+                string fp_itj = $"{fp_res}/textures/item_texture.json";
+                if (System.IO.File.Exists(fp_itj))
+                {
+                    StreamReader sr_od_tj = new StreamReader(fp_itj);
+                    string od_itj = sr_od_tj.ReadToEnd();
+                    sr_od_tj.Close();
+                    File.Delete(fp_itj);
+                    using (FileStream fs_tj = File.Create(fp_itj)) ;
+                    string tex_tj = $"\"}},\n    \"{item_tex}\":{{\"textures\":\"textures/items/{item_tex}\"}}\n  }}";
+                    System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_itj);
+                    sb_tj.Replace("\"}\n  }", $"{tex_tj}");
+                    string item_tex_json = sb_tj.ToString();
+                    StreamWriter tj_w = new StreamWriter(fp_itj, true);
+                    tj_w.Write(item_tex_json);
+                    tj_w.Close();
+                }
+                else
+                {
+                    using (FileStream fs_tj = File.Create(fp_itj)) ;
+                    StreamReader sr_od_itj = new StreamReader("original_data/terrain_texture.json");
+                    string od_tj = sr_od_itj.ReadToEnd();
+                    sr_od_itj.Close();
+                    string tex_tj = $"    \"{tex_name}\":{{\"textures\":\"textures/items/{item_tex}\"}}\n  }}";
+                    System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
+                    sb_tj.Replace("pack_name", $"{pack_name}");
+                    sb_tj.Replace("  }", $"{tex_tj}");
+                    string item_tex_json = sb_tj.ToString();
+                    StreamWriter sw_itj = new StreamWriter(fp_itj, true);
+                    sw_itj.Write(item_tex_json);
+                    sw_itj.Close();
+                }
             }
-            else
-            {
-                File.Copy($@"{fp_it}", $@"{fp_itn}");
-            }
-            //item.json生成
-            string fp_i = $"{fp_beh}/items/{item_name}.json";
-            using (FileStream fs_i = File.Create(fp_i)) ;
-            StreamReader sr_od_i = new StreamReader("original_data/item.json");
-            string od_i = sr_od_i.ReadToEnd();
-            sr_od_i.Close();
-            System.Text.StringBuilder sb_i = new System.Text.StringBuilder(od_i);
-            sb_i.Replace("item_id", $"{item_id}");
-            sb_i.Replace("item_tex", $"{item_tex}");
-            string item_json = sb_i.ToString();
-            StreamWriter sw_ij = new StreamWriter(fp_i, true);
-            sw_ij.Write(item_json);
-            sw_ij.Close();
-            //item_texture.json編集
-            string fp_itj = $"{fp_res}/textures/item_texture.json";
-            if (System.IO.File.Exists(fp_itj))
-            {
-                StreamReader sr_od_tj = new StreamReader(fp_itj);
-                string od_itj = sr_od_tj.ReadToEnd();
-                sr_od_tj.Close();
-                File.Delete(fp_itj);
-                using (FileStream fs_tj = File.Create(fp_itj)) ;
-                string tex_tj = $"\"}},\n    \"{item_tex}\":{{\"textures\":\"textures/blocks/{item_tex}\"}}\n  }}";
-                System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_itj);
-                sb_tj.Replace("\"}\n  }", $"{tex_tj}");
-                string item_tex_json = sb_tj.ToString();
-                StreamWriter tj_w = new StreamWriter(fp_itj, true);
-                tj_w.Write(item_tex_json);
-                tj_w.Close();
-            }
-            else
-            {
-                using (FileStream fs_tj = File.Create(fp_itj)) ;
-                StreamReader sr_od_itj = new StreamReader("original_data/terrain_texture.json");
-                string od_tj = sr_od_itj.ReadToEnd();
-                sr_od_itj.Close();
-                string tex_tj = $"    \"{tex_name}\":{{\"textures\":\"textures/blocks/{item_tex}\"}}\n  }}";
-                System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
-                sb_tj.Replace("pack_name", $"{pack_name}");
-                sb_tj.Replace("  }", $"{tex_tj}");
-                string item_tex_json = sb_tj.ToString();
-                StreamWriter sw_itj = new StreamWriter(fp_itj, true);
-                sw_itj.Write(item_tex_json);
-                sw_itj.Close();
-            }
-            //アイテム名 ja_JP.lang
-            if (System.IO.File.Exists(fp_tl))
-            {
-                StreamWriter sw_tl = new StreamWriter(fp_tl, true);
-                sw_tl.Write($"\ntile.{item_id}={item_tl}");
-                sw_tl.Close();
-            }
-            else
-            {
-                using (FileStream fs_tl = File.Create(fp_tl)) ;
-                StreamWriter sw_tl = new StreamWriter(fp_tl, true);
-                sw_tl.Write($"item.{item_id}={item_tl}");
-                sw_tl.Close();
-            }
+            //
             //manifest生成
+            //
             string fp_mb = $"{fp_beh}/manifest.json";
             using (FileStream fs_mb = File.Create(fp_mb)) ;
             Guid ub_od_1 = Guid.NewGuid();
@@ -269,6 +263,8 @@ namespace custom_block_c
             StreamWriter sw_mr = new StreamWriter(fp_mr, true);
             sw_mr.Write(manifest_res);
             sw_mr.Close();
+            
+            //メッセージ
             MessageBox.Show("ファイルが生成されました","ファイル生成", MessageBoxButtons.OK);
         }
         private void block_tex_DragEnter(object sender, DragEventArgs e)
@@ -345,7 +341,14 @@ namespace custom_block_c
 
         private void is_cb_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (is_cb.Checked == true)
+            {
+                ifs_l.Text = "アイテム生成ON";
+            }
+            else
+            {
+                ifs_l.Text = "アイテム生成OFF";
+            }
         }
     }
 }

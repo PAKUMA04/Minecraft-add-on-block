@@ -72,6 +72,11 @@ namespace custom_block_c
             this.it_tb = new System.Windows.Forms.TextBox();
             this.itn_tb = new System.Windows.Forms.TextBox();
             this.is_cb = new System.Windows.Forms.CheckBox();
+            this.idn_tb = new System.Windows.Forms.TextBox();
+            this.idn_l = new System.Windows.Forms.Label();
+            this.ifs_l = new System.Windows.Forms.Label();
+            this.mss_l = new System.Windows.Forms.Label();
+            this.mss_nud = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
@@ -80,6 +85,7 @@ namespace custom_block_c
             ((System.ComponentModel.ISupportInitialize)(this.pi_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.it_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mss_nud)).BeginInit();
             this.SuspendLayout();
             // 
             // bn_tb
@@ -477,6 +483,11 @@ namespace custom_block_c
             this.pv_nud.Name = "pv_nud";
             this.pv_nud.Size = new System.Drawing.Size(50, 21);
             this.pv_nud.TabIndex = 35;
+            this.pv_nud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // ms_l
             // 
@@ -592,12 +603,93 @@ namespace custom_block_c
             this.is_cb.UseVisualStyleBackColor = true;
             this.is_cb.CheckedChanged += new System.EventHandler(this.is_cb_CheckedChanged);
             // 
+            // idn_tb
+            // 
+            this.idn_tb.BackColor = System.Drawing.Color.Gray;
+            this.idn_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.idn_tb.ForeColor = System.Drawing.Color.White;
+            this.idn_tb.Location = new System.Drawing.Point(857, 342);
+            this.idn_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.idn_tb.Name = "idn_tb";
+            this.idn_tb.Size = new System.Drawing.Size(200, 21);
+            this.idn_tb.TabIndex = 46;
+            // 
+            // idn_l
+            // 
+            this.idn_l.AutoSize = true;
+            this.idn_l.BackColor = System.Drawing.Color.Transparent;
+            this.idn_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.idn_l.ForeColor = System.Drawing.Color.White;
+            this.idn_l.Location = new System.Drawing.Point(798, 343);
+            this.idn_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.idn_l.Name = "idn_l";
+            this.idn_l.Size = new System.Drawing.Size(49, 14);
+            this.idn_l.TabIndex = 47;
+            this.idn_l.Text = "表示名";
+            this.idn_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ifs_l
+            // 
+            this.ifs_l.AutoSize = true;
+            this.ifs_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.ifs_l.ForeColor = System.Drawing.Color.White;
+            this.ifs_l.Location = new System.Drawing.Point(703, 500);
+            this.ifs_l.Name = "ifs_l";
+            this.ifs_l.Size = new System.Drawing.Size(104, 14);
+            this.ifs_l.TabIndex = 48;
+            this.ifs_l.Text = "アイテム生成OFF";
+            // 
+            // mss_l
+            // 
+            this.mss_l.AutoSize = true;
+            this.mss_l.BackColor = System.Drawing.Color.Transparent;
+            this.mss_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.mss_l.ForeColor = System.Drawing.Color.White;
+            this.mss_l.Location = new System.Drawing.Point(950, 256);
+            this.mss_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.mss_l.Name = "mss_l";
+            this.mss_l.Size = new System.Drawing.Size(49, 14);
+            this.mss_l.TabIndex = 49;
+            this.mss_l.Text = "所持数";
+            this.mss_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mss_nud
+            // 
+            this.mss_nud.BackColor = System.Drawing.Color.Gray;
+            this.mss_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.mss_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.mss_nud.ForeColor = System.Drawing.Color.White;
+            this.mss_nud.Location = new System.Drawing.Point(1007, 255);
+            this.mss_nud.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.mss_nud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.mss_nud.Name = "mss_nud";
+            this.mss_nud.Size = new System.Drawing.Size(50, 21);
+            this.mss_nud.TabIndex = 50;
+            this.mss_nud.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.mss_nud);
+            this.Controls.Add(this.mss_l);
+            this.Controls.Add(this.ifs_l);
+            this.Controls.Add(this.idn_l);
+            this.Controls.Add(this.idn_tb);
             this.Controls.Add(this.is_cb);
             this.Controls.Add(this.itn_tb);
             this.Controls.Add(this.it_tb);
@@ -644,7 +736,6 @@ namespace custom_block_c
             this.MaximizeBox = false;
             this.Name = "main_f";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Minecraft BE カスタムブロックジェネレーター";
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).EndInit();
@@ -653,6 +744,7 @@ namespace custom_block_c
             ((System.ComponentModel.ISupportInitialize)(this.pi_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pv_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.it_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mss_nud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,6 +793,11 @@ namespace custom_block_c
         private TextBox it_tb;
         private TextBox itn_tb;
         private CheckBox is_cb;
+        private TextBox idn_tb;
+        private Label idn_l;
+        private Label ifs_l;
+        private Label mss_l;
+        private NumericUpDown mss_nud;
     }
 }
 
