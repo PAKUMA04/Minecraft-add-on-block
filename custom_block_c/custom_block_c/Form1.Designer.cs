@@ -77,6 +77,8 @@ namespace custom_block_c
             this.ifs_l = new System.Windows.Forms.Label();
             this.mss_l = new System.Windows.Forms.Label();
             this.mss_nud = new System.Windows.Forms.NumericUpDown();
+            this.lb_btn = new System.Windows.Forms.Button();
+            this.lb_cb = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
@@ -93,7 +95,7 @@ namespace custom_block_c
             this.bn_tb.BackColor = System.Drawing.Color.Gray;
             this.bn_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bn_tb.ForeColor = System.Drawing.Color.White;
-            this.bn_tb.Location = new System.Drawing.Point(533, 229);
+            this.bn_tb.Location = new System.Drawing.Point(387, 231);
             this.bn_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.bn_tb.Name = "bn_tb";
             this.bn_tb.Size = new System.Drawing.Size(200, 21);
@@ -104,7 +106,7 @@ namespace custom_block_c
             this.bn_l.BackColor = System.Drawing.Color.Transparent;
             this.bn_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bn_l.ForeColor = System.Drawing.Color.White;
-            this.bn_l.Location = new System.Drawing.Point(466, 228);
+            this.bn_l.Location = new System.Drawing.Point(320, 230);
             this.bn_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.bn_l.Name = "bn_l";
             this.bn_l.Size = new System.Drawing.Size(60, 20);
@@ -118,7 +120,7 @@ namespace custom_block_c
             this.ns_l.BackColor = System.Drawing.Color.Transparent;
             this.ns_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ns_l.ForeColor = System.Drawing.Color.White;
-            this.ns_l.Location = new System.Drawing.Point(460, 260);
+            this.ns_l.Location = new System.Drawing.Point(314, 262);
             this.ns_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ns_l.Name = "ns_l";
             this.ns_l.Size = new System.Drawing.Size(63, 14);
@@ -133,7 +135,7 @@ namespace custom_block_c
             this.ns_tb.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.ns_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ns_tb.ForeColor = System.Drawing.Color.White;
-            this.ns_tb.Location = new System.Drawing.Point(533, 258);
+            this.ns_tb.Location = new System.Drawing.Point(387, 260);
             this.ns_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ns_tb.Name = "ns_tb";
             this.ns_tb.Size = new System.Drawing.Size(200, 21);
@@ -145,7 +147,7 @@ namespace custom_block_c
             this.dt_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dt_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dt_nud.ForeColor = System.Drawing.Color.White;
-            this.dt_nud.Location = new System.Drawing.Point(533, 313);
+            this.dt_nud.Location = new System.Drawing.Point(387, 315);
             this.dt_nud.Maximum = new decimal(new int[] {
             255,
             0,
@@ -160,7 +162,7 @@ namespace custom_block_c
             this.dt_l.BackColor = System.Drawing.Color.Transparent;
             this.dt_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dt_l.ForeColor = System.Drawing.Color.White;
-            this.dt_l.Location = new System.Drawing.Point(463, 313);
+            this.dt_l.Location = new System.Drawing.Point(317, 315);
             this.dt_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.dt_l.Name = "dt_l";
             this.dt_l.Size = new System.Drawing.Size(63, 20);
@@ -174,7 +176,7 @@ namespace custom_block_c
             this.le_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.le_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.le_nud.ForeColor = System.Drawing.Color.White;
-            this.le_nud.Location = new System.Drawing.Point(683, 313);
+            this.le_nud.Location = new System.Drawing.Point(537, 315);
             this.le_nud.Maximum = new decimal(new int[] {
             15,
             0,
@@ -189,7 +191,7 @@ namespace custom_block_c
             this.le_l.BackColor = System.Drawing.Color.Transparent;
             this.le_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.le_l.ForeColor = System.Drawing.Color.White;
-            this.le_l.Location = new System.Drawing.Point(625, 315);
+            this.le_l.Location = new System.Drawing.Point(479, 317);
             this.le_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.le_l.Name = "le_l";
             this.le_l.Size = new System.Drawing.Size(50, 20);
@@ -202,7 +204,7 @@ namespace custom_block_c
             this.er_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.er_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.er_nud.ForeColor = System.Drawing.Color.White;
-            this.er_nud.Location = new System.Drawing.Point(533, 340);
+            this.er_nud.Location = new System.Drawing.Point(387, 342);
             this.er_nud.Maximum = new decimal(new int[] {
             255,
             0,
@@ -217,7 +219,7 @@ namespace custom_block_c
             this.er_l.BackColor = System.Drawing.Color.Transparent;
             this.er_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.er_l.ForeColor = System.Drawing.Color.White;
-            this.er_l.Location = new System.Drawing.Point(461, 340);
+            this.er_l.Location = new System.Drawing.Point(315, 342);
             this.er_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.er_l.Name = "er_l";
             this.er_l.Size = new System.Drawing.Size(63, 20);
@@ -270,7 +272,7 @@ namespace custom_block_c
             this.bt_l.AutoSize = true;
             this.bt_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.bt_l.ForeColor = System.Drawing.Color.White;
-            this.bt_l.Location = new System.Drawing.Point(464, 371);
+            this.bt_l.Location = new System.Drawing.Point(318, 373);
             this.bt_l.Name = "bt_l";
             this.bt_l.Size = new System.Drawing.Size(59, 28);
             this.bt_l.TabIndex = 20;
@@ -302,7 +304,7 @@ namespace custom_block_c
             // 
             this.block_tex.BackColor = System.Drawing.Color.Gray;
             this.block_tex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.block_tex.Location = new System.Drawing.Point(533, 367);
+            this.block_tex.Location = new System.Drawing.Point(387, 369);
             this.block_tex.Name = "block_tex";
             this.block_tex.Size = new System.Drawing.Size(80, 80);
             this.block_tex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -366,7 +368,7 @@ namespace custom_block_c
             this.tl_tb.BackColor = System.Drawing.Color.Gray;
             this.tl_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.tl_tb.ForeColor = System.Drawing.Color.White;
-            this.tl_tb.Location = new System.Drawing.Point(533, 286);
+            this.tl_tb.Location = new System.Drawing.Point(387, 288);
             this.tl_tb.Name = "tl_tb";
             this.tl_tb.Size = new System.Drawing.Size(200, 21);
             this.tl_tb.TabIndex = 25;
@@ -376,7 +378,7 @@ namespace custom_block_c
             this.tl_l.AutoSize = true;
             this.tl_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.tl_l.ForeColor = System.Drawing.Color.White;
-            this.tl_l.Location = new System.Drawing.Point(475, 287);
+            this.tl_l.Location = new System.Drawing.Point(329, 289);
             this.tl_l.Name = "tl_l";
             this.tl_l.Size = new System.Drawing.Size(49, 14);
             this.tl_l.TabIndex = 26;
@@ -387,7 +389,7 @@ namespace custom_block_c
             // 
             this.pi_pb.BackColor = System.Drawing.Color.Gray;
             this.pi_pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pi_pb.Location = new System.Drawing.Point(211, 314);
+            this.pi_pb.Location = new System.Drawing.Point(98, 316);
             this.pi_pb.Name = "pi_pb";
             this.pi_pb.Size = new System.Drawing.Size(100, 100);
             this.pi_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -401,7 +403,7 @@ namespace custom_block_c
             this.pn_l.AutoSize = true;
             this.pn_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pn_l.ForeColor = System.Drawing.Color.White;
-            this.pn_l.Location = new System.Drawing.Point(153, 236);
+            this.pn_l.Location = new System.Drawing.Point(40, 238);
             this.pn_l.Name = "pn_l";
             this.pn_l.Size = new System.Drawing.Size(51, 14);
             this.pn_l.TabIndex = 28;
@@ -412,7 +414,7 @@ namespace custom_block_c
             this.pn_tb.BackColor = System.Drawing.Color.Gray;
             this.pn_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pn_tb.ForeColor = System.Drawing.Color.White;
-            this.pn_tb.Location = new System.Drawing.Point(211, 233);
+            this.pn_tb.Location = new System.Drawing.Point(98, 235);
             this.pn_tb.Name = "pn_tb";
             this.pn_tb.Size = new System.Drawing.Size(200, 21);
             this.pn_tb.TabIndex = 29;
@@ -430,7 +432,7 @@ namespace custom_block_c
             this.pi_l.AutoSize = true;
             this.pi_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pi_l.ForeColor = System.Drawing.Color.White;
-            this.pi_l.Location = new System.Drawing.Point(127, 314);
+            this.pi_l.Location = new System.Drawing.Point(14, 316);
             this.pi_l.Name = "pi_l";
             this.pi_l.Size = new System.Drawing.Size(78, 14);
             this.pi_l.TabIndex = 31;
@@ -441,7 +443,7 @@ namespace custom_block_c
             this.pd_l.AutoSize = true;
             this.pd_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pd_l.ForeColor = System.Drawing.Color.White;
-            this.pd_l.Location = new System.Drawing.Point(140, 263);
+            this.pd_l.Location = new System.Drawing.Point(27, 265);
             this.pd_l.Name = "pd_l";
             this.pd_l.Size = new System.Drawing.Size(65, 14);
             this.pd_l.TabIndex = 32;
@@ -452,7 +454,7 @@ namespace custom_block_c
             this.pd_tb.BackColor = System.Drawing.Color.Gray;
             this.pd_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pd_tb.ForeColor = System.Drawing.Color.White;
-            this.pd_tb.Location = new System.Drawing.Point(211, 260);
+            this.pd_tb.Location = new System.Drawing.Point(98, 262);
             this.pd_tb.Name = "pd_tb";
             this.pd_tb.Size = new System.Drawing.Size(200, 21);
             this.pd_tb.TabIndex = 33;
@@ -462,7 +464,7 @@ namespace custom_block_c
             this.pv_l.AutoSize = true;
             this.pv_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.pv_l.ForeColor = System.Drawing.Color.White;
-            this.pv_l.Location = new System.Drawing.Point(146, 289);
+            this.pv_l.Location = new System.Drawing.Point(33, 291);
             this.pv_l.Name = "pv_l";
             this.pv_l.Size = new System.Drawing.Size(59, 14);
             this.pv_l.TabIndex = 34;
@@ -474,7 +476,7 @@ namespace custom_block_c
             this.pv_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.pv_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.pv_nud.ForeColor = System.Drawing.Color.White;
-            this.pv_nud.Location = new System.Drawing.Point(211, 287);
+            this.pv_nud.Location = new System.Drawing.Point(98, 289);
             this.pv_nud.Maximum = new decimal(new int[] {
             255,
             0,
@@ -494,7 +496,7 @@ namespace custom_block_c
             this.ms_l.AutoSize = true;
             this.ms_l.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ms_l.ForeColor = System.Drawing.Color.White;
-            this.ms_l.Location = new System.Drawing.Point(207, 205);
+            this.ms_l.Location = new System.Drawing.Point(94, 207);
             this.ms_l.Name = "ms_l";
             this.ms_l.Size = new System.Drawing.Size(130, 20);
             this.ms_l.TabIndex = 36;
@@ -505,7 +507,7 @@ namespace custom_block_c
             this.bs_l.AutoSize = true;
             this.bs_l.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bs_l.ForeColor = System.Drawing.Color.White;
-            this.bs_l.Location = new System.Drawing.Point(529, 205);
+            this.bs_l.Location = new System.Drawing.Point(383, 207);
             this.bs_l.Name = "bs_l";
             this.bs_l.Size = new System.Drawing.Size(110, 20);
             this.bs_l.TabIndex = 37;
@@ -517,7 +519,7 @@ namespace custom_block_c
             this.is_l.AutoSize = true;
             this.is_l.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.is_l.ForeColor = System.Drawing.Color.White;
-            this.is_l.Location = new System.Drawing.Point(853, 205);
+            this.is_l.Location = new System.Drawing.Point(904, 216);
             this.is_l.Name = "is_l";
             this.is_l.Size = new System.Drawing.Size(115, 20);
             this.is_l.TabIndex = 38;
@@ -529,7 +531,7 @@ namespace custom_block_c
             this.in_tb.BackColor = System.Drawing.Color.Gray;
             this.in_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.in_tb.ForeColor = System.Drawing.Color.White;
-            this.in_tb.Location = new System.Drawing.Point(857, 227);
+            this.in_tb.Location = new System.Drawing.Point(908, 238);
             this.in_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.in_tb.Name = "in_tb";
             this.in_tb.Size = new System.Drawing.Size(200, 21);
@@ -541,7 +543,7 @@ namespace custom_block_c
             this.in_l.BackColor = System.Drawing.Color.Transparent;
             this.in_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.in_l.ForeColor = System.Drawing.Color.White;
-            this.in_l.Location = new System.Drawing.Point(783, 228);
+            this.in_l.Location = new System.Drawing.Point(834, 239);
             this.in_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.in_l.Name = "in_l";
             this.in_l.Size = new System.Drawing.Size(64, 14);
@@ -553,7 +555,7 @@ namespace custom_block_c
             // 
             this.it_pb.BackColor = System.Drawing.Color.Gray;
             this.it_pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.it_pb.Location = new System.Drawing.Point(857, 255);
+            this.it_pb.Location = new System.Drawing.Point(908, 266);
             this.it_pb.Name = "it_pb";
             this.it_pb.Size = new System.Drawing.Size(80, 80);
             this.it_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -568,7 +570,7 @@ namespace custom_block_c
             this.it_l.AutoSize = true;
             this.it_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.it_l.ForeColor = System.Drawing.Color.White;
-            this.it_l.Location = new System.Drawing.Point(788, 255);
+            this.it_l.Location = new System.Drawing.Point(839, 266);
             this.it_l.Name = "it_l";
             this.it_l.Size = new System.Drawing.Size(59, 28);
             this.it_l.TabIndex = 42;
@@ -596,7 +598,7 @@ namespace custom_block_c
             this.is_cb.AutoSize = true;
             this.is_cb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.is_cb.ForeColor = System.Drawing.Color.White;
-            this.is_cb.Location = new System.Drawing.Point(974, 207);
+            this.is_cb.Location = new System.Drawing.Point(1025, 218);
             this.is_cb.Name = "is_cb";
             this.is_cb.Size = new System.Drawing.Size(15, 14);
             this.is_cb.TabIndex = 45;
@@ -608,7 +610,7 @@ namespace custom_block_c
             this.idn_tb.BackColor = System.Drawing.Color.Gray;
             this.idn_tb.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.idn_tb.ForeColor = System.Drawing.Color.White;
-            this.idn_tb.Location = new System.Drawing.Point(857, 342);
+            this.idn_tb.Location = new System.Drawing.Point(908, 353);
             this.idn_tb.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.idn_tb.Name = "idn_tb";
             this.idn_tb.Size = new System.Drawing.Size(200, 21);
@@ -620,7 +622,7 @@ namespace custom_block_c
             this.idn_l.BackColor = System.Drawing.Color.Transparent;
             this.idn_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.idn_l.ForeColor = System.Drawing.Color.White;
-            this.idn_l.Location = new System.Drawing.Point(798, 343);
+            this.idn_l.Location = new System.Drawing.Point(849, 354);
             this.idn_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.idn_l.Name = "idn_l";
             this.idn_l.Size = new System.Drawing.Size(49, 14);
@@ -645,7 +647,7 @@ namespace custom_block_c
             this.mss_l.BackColor = System.Drawing.Color.Transparent;
             this.mss_l.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mss_l.ForeColor = System.Drawing.Color.White;
-            this.mss_l.Location = new System.Drawing.Point(950, 256);
+            this.mss_l.Location = new System.Drawing.Point(1001, 267);
             this.mss_l.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.mss_l.Name = "mss_l";
             this.mss_l.Size = new System.Drawing.Size(49, 14);
@@ -659,7 +661,7 @@ namespace custom_block_c
             this.mss_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.mss_nud.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mss_nud.ForeColor = System.Drawing.Color.White;
-            this.mss_nud.Location = new System.Drawing.Point(1007, 255);
+            this.mss_nud.Location = new System.Drawing.Point(1058, 266);
             this.mss_nud.Maximum = new decimal(new int[] {
             64,
             0,
@@ -679,12 +681,35 @@ namespace custom_block_c
             0,
             0});
             // 
+            // lb_btn
+            // 
+            this.lb_btn.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.lb_btn.ForeColor = System.Drawing.Color.White;
+            this.lb_btn.Location = new System.Drawing.Point(747, 389);
+            this.lb_btn.Name = "lb_btn";
+            this.lb_btn.Size = new System.Drawing.Size(60, 60);
+            this.lb_btn.TabIndex = 51;
+            this.lb_btn.UseVisualStyleBackColor = true;
+            this.lb_btn.Click += new System.EventHandler(this.lb_btn_Click);
+            // 
+            // lb_cb
+            // 
+            this.lb_cb.AutoSize = true;
+            this.lb_cb.Location = new System.Drawing.Point(1051, 15);
+            this.lb_cb.Name = "lb_cb";
+            this.lb_cb.Size = new System.Drawing.Size(15, 14);
+            this.lb_cb.TabIndex = 52;
+            this.lb_cb.UseVisualStyleBackColor = true;
+            this.lb_cb.Visible = false;
+            // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.lb_cb);
+            this.Controls.Add(this.lb_btn);
             this.Controls.Add(this.mss_nud);
             this.Controls.Add(this.mss_l);
             this.Controls.Add(this.ifs_l);
@@ -735,7 +760,7 @@ namespace custom_block_c
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.Name = "main_f";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).EndInit();
@@ -798,6 +823,8 @@ namespace custom_block_c
         private Label ifs_l;
         private Label mss_l;
         private NumericUpDown mss_nud;
+        private Button lb_btn;
+        private CheckBox lb_cb;
     }
 }
 

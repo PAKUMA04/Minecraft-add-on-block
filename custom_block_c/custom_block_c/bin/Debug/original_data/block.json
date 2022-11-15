@@ -4,6 +4,7 @@
     "description": {
       "identifier": "block_id"
     },
+
     "components": {
       "minecraft:loot": "loot_tables/blocks/block_name_loot.json",
       "minecraft:unit_cube": {},

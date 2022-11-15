@@ -1,0 +1,58 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "block_id",
+      "properties": {
+        "axis": [ "y", "x", "z" ]
+      }
+    },
+
+    "components": {
+      "minecraft:loot": "loot_tables/blocks/block_name_loot.json",
+      "minecraft:unit_cube": {},
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "block_tex",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "block_itex",
+          "render_method": "opaque"
+        },
+        "down": "up"
+      },
+      "minecraft:on_player_placing": {
+        "event": "placed"
+      },
+      "minecraft:destroy_time": "block_dt",
+      "minecraft:explosion_resistance": "block_er",
+      "minecraft:friction": 0.5,
+      "minecraft:map_color": "#a6a6a6",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": "block_le"
+    },
+
+    "events": {
+      "placed": {
+        "set_block_property": {
+          "axis": "((query.cardinal_block_face_placed_on == 2.0 || query.cardinal_block_face_placed_on == 3.0) ? 'z' : ((query.cardinal_block_face_placed_on == 4.0 || query.cardinal_block_face_placed_on == 5.0) ? 'x' : 'y'))"
+        }
+      }
+    },
+
+    "permutations": [
+      {
+        "condition": "query.block_property('axis') == 'x'",
+        "components": { "minecraft:rotation": [ 0, 0, -90 ] }
+      },
+      {
+        "condition": "query.block_property('axis') == 'y'",
+        "components": { "minecraft:rotation": [ 0, 0, 0 ] }
+      },
+      {
+        "condition": "query.block_property('axis') == 'z'",
+        "components": { "minecraft:rotation": [ 90, 0, 0 ] }
+      }
+  }
+}

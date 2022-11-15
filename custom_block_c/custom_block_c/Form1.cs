@@ -350,5 +350,10 @@ namespace custom_block_c
                 ifs_l.Text = "アイテム生成OFF";
             }
         }
+
+        private void lb_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
