@@ -79,6 +79,10 @@ namespace custom_block_c
             this.mss_nud = new System.Windows.Forms.NumericUpDown();
             this.lb_btn = new System.Windows.Forms.Button();
             this.lb_cb = new System.Windows.Forms.CheckBox();
+            this.bs_cb = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bfs_l = new System.Windows.Forms.Label();
+            this.bt_cb = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
@@ -338,7 +342,7 @@ namespace custom_block_c
             this.done_btn.TabIndex = 5;
             this.done_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.done_btn.UseVisualStyleBackColor = true;
-            this.done_btn.Click += new System.EventHandler(this.button1_Click);
+            this.done_btn.Click += new System.EventHandler(this.done_btn_Click);
             // 
             // folder_tb
             // 
@@ -635,7 +639,7 @@ namespace custom_block_c
             this.ifs_l.AutoSize = true;
             this.ifs_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.ifs_l.ForeColor = System.Drawing.Color.White;
-            this.ifs_l.Location = new System.Drawing.Point(703, 500);
+            this.ifs_l.Location = new System.Drawing.Point(703, 515);
             this.ifs_l.Name = "ifs_l";
             this.ifs_l.Size = new System.Drawing.Size(104, 14);
             this.ifs_l.TabIndex = 48;
@@ -702,12 +706,66 @@ namespace custom_block_c
             this.lb_cb.UseVisualStyleBackColor = true;
             this.lb_cb.Visible = false;
             // 
+            // bs_cb
+            // 
+            this.bs_cb.AutoSize = true;
+            this.bs_cb.Checked = true;
+            this.bs_cb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bs_cb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.bs_cb.ForeColor = System.Drawing.Color.White;
+            this.bs_cb.Location = new System.Drawing.Point(499, 207);
+            this.bs_cb.Name = "bs_cb";
+            this.bs_cb.Size = new System.Drawing.Size(15, 14);
+            this.bs_cb.TabIndex = 53;
+            this.bs_cb.UseVisualStyleBackColor = true;
+            this.bs_cb.CheckedChanged += new System.EventHandler(this.bs_cb_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(259, 501);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 14);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "名前空間はブロックとアイテムで共通です";
+            // 
+            // bfs_l
+            // 
+            this.bfs_l.AutoSize = true;
+            this.bfs_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.bfs_l.ForeColor = System.Drawing.Color.White;
+            this.bfs_l.Location = new System.Drawing.Point(703, 501);
+            this.bfs_l.Name = "bfs_l";
+            this.bfs_l.Size = new System.Drawing.Size(93, 14);
+            this.bfs_l.TabIndex = 55;
+            this.bfs_l.Text = "ブロック生成ON";
+            // 
+            // bt_cb
+            // 
+            this.bt_cb.AutoSize = true;
+            this.bt_cb.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_cb.Checked = true;
+            this.bt_cb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bt_cb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.bt_cb.ForeColor = System.Drawing.Color.White;
+            this.bt_cb.Location = new System.Drawing.Point(363, 404);
+            this.bt_cb.Name = "bt_cb";
+            this.bt_cb.Size = new System.Drawing.Size(15, 14);
+            this.bt_cb.TabIndex = 56;
+            this.bt_cb.UseVisualStyleBackColor = true;
+            // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.bt_cb);
+            this.Controls.Add(this.bfs_l);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bs_cb);
             this.Controls.Add(this.lb_cb);
             this.Controls.Add(this.lb_btn);
             this.Controls.Add(this.mss_nud);
@@ -825,6 +883,10 @@ namespace custom_block_c
         private NumericUpDown mss_nud;
         private Button lb_btn;
         private CheckBox lb_cb;
+        private CheckBox bs_cb;
+        private Label label1;
+        private Label bfs_l;
+        private CheckBox bt_cb;
     }
 }
 
