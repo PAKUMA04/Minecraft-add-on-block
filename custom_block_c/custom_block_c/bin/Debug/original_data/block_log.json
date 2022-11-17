@@ -17,7 +17,7 @@
           "render_method": "opaque"
         },
         "up": {
-          "texture": "block_itex",
+          "texture": "block_ltex",
           "render_method": "opaque"
         },
         "down": "up"

@@ -23,8 +23,9 @@ namespace custom_block_c
             block_tex.AllowDrop = true;
             pi_pb.AllowDrop = true;
             it_pb.AllowDrop = true;
+            block_ltex.AllowDrop = true;
         }
-        private void done_btn_Click(object sender, EventArgs e)
+        public void done_btn_Click(object sender, EventArgs e)
         {
             string fp_folder = folder_tb.Text;
             Directory.CreateDirectory($"{fp_folder}/custom_block");//保存フォルダ作成
@@ -32,24 +33,28 @@ namespace custom_block_c
             string fp_beh = $"{fp_folder}/custom_block/{pack_name}_b";//ビヘイビアーファイルパス
             string fp_res = $"{fp_folder}/custom_block/{pack_name}_r";//リソースファイルパス
             Directory.CreateDirectory(fp_beh);//ビヘイビアーフォルダ作成
-            Directory.CreateDirectory($"{fp_beh}/blocks");//ブロックフォルダ作成
             Directory.CreateDirectory($"{fp_beh}/loot_tables");//ルートテーブルフォルダ作成
             Directory.CreateDirectory(fp_res);//リソースフォルダ作成
             Directory.CreateDirectory($"{fp_res}/textures");//テクスチャフォルダ作成
             Directory.CreateDirectory($"{fp_res}/texts");//言語フォルダ作成
-            string fp_rtb = $"{fp_res}/textures/blocks";//ブロックテクスチャフォルダパス
-            Directory.CreateDirectory(fp_rtb);//ブロックテクスチャフォルダ作成
             string name_space = ns_tb.Text;//名前空間取得
-            if (bs_cb.Checked == true)
+            if (bs_cb.Checked == true)//ブロックファイル生成
             {
+                Directory.CreateDirectory($"{fp_beh}/blocks");//ブロックフォルダ作成
+                string fp_rtb = $"{fp_res}/textures/blocks";//ブロックテクスチャフォルダパス
+                Directory.CreateDirectory(fp_rtb);//ブロックテクスチャフォルダ作成
                 string block_name = bn_tb.Text;//ブロック名取得
                 string block_id = $"{name_space}:{block_name}";//ブロックID生成
                 string fp_t = bt_tb.Text;//ブロックテクスチャ元画像パス
                 if (bt_cb.Checked == true)
                 {
-                    tn_tb.Text = $"{block_name}";
+                    tn_tb.Text = $"{block_name}";//元画像をブロック名に改名
                 }
                 string tex_name = tn_tb.Text;//ブロックテクスチャ画像名取得
+                if (lb_cb.Checked == true)
+                {
+                    string fp_lbt = lbt_fp_tb.Text;
+                }
                 string block_tl = tl_tb.Text;//ブロックの表示名
                 string block_le = le_nud.Text;//明るさ
                 string block_dt = dt_nud.Text;//破壊時間
@@ -60,7 +65,7 @@ namespace custom_block_c
                     File.Copy($@"{fp_t}", $@"{fp_bt}");//画像が無かったらコピー
                 }
                 //
-                //ブロックファイル生成
+                //block.json生成
                 //
                 string fp_b = $"{fp_beh}/blocks/{block_name}.json";
                 using (FileStream fs_b = File.Create(fp_b)) ;
@@ -95,21 +100,33 @@ namespace custom_block_c
                 //
                 //terrain_texture.jsonの編集
                 //
-                string fp_tj = $"{fp_res}/textures/terrain_texture.json";
-                if (System.IO.File.Exists(fp_tj))
+                string fp_tj = $"{fp_res}/textures/terrain_texture.json";//terrain_texture.jsonパス
+                string tex_tj = $"\"}},\n    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";//追加内容
+                if (System.IO.File.Exists(fp_tj))//terrain_textureの存在を確認
                 {
                     StreamReader sr_od_tj = new StreamReader(fp_tj);
                     string od_tj = sr_od_tj.ReadToEnd();
                     sr_od_tj.Close();
                     File.Delete(fp_tj);
                     using (FileStream fs_tj = File.Create(fp_tj)) ;
-                    string tex_tj = $"\"}},\n    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";
                     System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
                     sb_tj.Replace("\"}\n  }", $"{tex_tj}");
-                    string texture_json = sb_tj.ToString();
-                    StreamWriter tj_w = new StreamWriter(fp_tj, true);
-                    tj_w.Write(texture_json);
-                    tj_w.Close();
+                    if (lb_cb.Checked == true)
+                    {
+                        string lb_tj = $"\"}},\n    \"{lbt_name}\":{{\"textures\":\"textures/blocks/{lbt_name}\"}}\n  }}";
+                        sb_tj.Replace("\"}\n  }", $"{lb_tj}");
+                        string texture_json = sb_tj.ToString();
+                        StreamWriter tj_w = new StreamWriter(fp_tj, true);
+                        tj_w.Write(texture_json);
+                        tj_w.Close();
+                    }
+                    else
+                    {
+                        string texture_json = sb_tj.ToString();
+                        StreamWriter tj_w = new StreamWriter(fp_tj, true);
+                        tj_w.Write(texture_json);
+                        tj_w.Close();
+                    }
                 }
                 else
                 {
@@ -117,14 +134,25 @@ namespace custom_block_c
                     StreamReader sr_od_tj = new StreamReader("original_data/terrain_texture.json");
                     string od_tj = sr_od_tj.ReadToEnd();
                     sr_od_tj.Close();
-                    string tex_tj = $"    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";
                     System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
                     sb_tj.Replace("pack_name", $"{pack_name}");
                     sb_tj.Replace("  }", $"{tex_tj}");
-                    string texture_json = sb_tj.ToString();
-                    StreamWriter tj_w = new StreamWriter(fp_tj, true);
-                    tj_w.Write(texture_json);
-                    tj_w.Close();
+                    if (lb_cb.Checked == true)
+                    {
+                        string lb_tj = $"\"}},\n    \"{lbt_name}\":{{\"textures\":\"textures/blocks/{lbt_name}\"}}\n  }}";
+                        sb_tj.Replace("\"}\n  }", $"{lb_tj}");
+                        string texture_json = sb_tj.ToString();
+                        StreamWriter tj_w = new StreamWriter(fp_tj, true);
+                        tj_w.Write(texture_json);
+                        tj_w.Close();
+                    }
+                    else
+                    {
+                        string texture_json = sb_tj.ToString();
+                        StreamWriter tj_w = new StreamWriter(fp_tj, true);
+                        tj_w.Write(texture_json);
+                        tj_w.Close();
+                    }
                 }
                 //
                 //ブロック名ja_JP.lang
@@ -218,16 +246,16 @@ namespace custom_block_c
             //
             //manifest
             //
-            string pack_desc = pd_tb.Text;
-            string pack_ver = pv_nud.Text;
-            string fp_od_pi = pi_tb.Text;
-            string fp_pi_b = $"{fp_beh}\\pack_icon.png";
-            if (System.IO.File.Exists(fp_pi_b) == false)
+            string pack_desc = pd_tb.Text;//パック説明
+            string pack_ver = pv_nud.Text;//パックバージョン
+            string fp_od_pi = pi_tb.Text;//pack_icon元画像パス
+            string fp_pi_b = $"{fp_beh}\\pack_icon.png";//pack_icon保存先パス
+            if (System.IO.File.Exists(fp_pi_b) == false)//ビヘイビアーpack_icon
             {
                 File.Copy($@"{fp_od_pi}", $@"{fp_pi_b}");
             }
             string fp_pi_r = $"{fp_res}\\pack_icon.png";
-            if (System.IO.File.Exists(fp_pi_r) == false)
+            if (System.IO.File.Exists(fp_pi_r) == false)//リソースpack_icon
             {
                 File.Copy($@"{fp_od_pi}", $@"{fp_pi_r}");
             }
@@ -330,6 +358,26 @@ namespace custom_block_c
                 itn_tb.Text = Path.GetFileNameWithoutExtension(fp_it);
             }
         }
+        private void block_ltex_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+        private void block_ltex_DragDrop(object sender, DragEventArgs e)//柱ブロックテクスチャ設定
+        {
+            string fd_lbt = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            block_ltex.ImageLocation = fd_lbt;
+            block_ltex.Image = new Bitmap(fd_lbt);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            for (int i = 0; i < files.Length; i++)
+            {
+                string fp_lbt= files[i];
+                lbt_fp_tb.Text = fp_lbt;
+                lbt_fn_tb.Text = Path.GetFileNameWithoutExtension(fp_lbt);
+            }
+        }
         private void file_btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
@@ -355,11 +403,6 @@ namespace custom_block_c
             }
         }
 
-        private void lb_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void bs_cb_CheckedChanged(object sender, EventArgs e)
         {
             if(bs_cb.Checked == true)
@@ -369,6 +412,20 @@ namespace custom_block_c
             else
             {
                 bfs_l.Text = "ブロック生成OFF";
+            }
+        }
+
+        private void lb_cb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lb_cb.Checked == true)
+            {
+                ltex_l.Visible = true;
+                block_ltex.Visible = true;
+            }
+            else
+            {
+                ltex_l.Visible = false;
+                block_ltex.Visible = false;
             }
         }
     }

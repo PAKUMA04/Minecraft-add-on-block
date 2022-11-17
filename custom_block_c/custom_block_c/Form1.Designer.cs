@@ -77,12 +77,15 @@ namespace custom_block_c
             this.ifs_l = new System.Windows.Forms.Label();
             this.mss_l = new System.Windows.Forms.Label();
             this.mss_nud = new System.Windows.Forms.NumericUpDown();
-            this.lb_btn = new System.Windows.Forms.Button();
             this.lb_cb = new System.Windows.Forms.CheckBox();
             this.bs_cb = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bfs_l = new System.Windows.Forms.Label();
             this.bt_cb = new System.Windows.Forms.CheckBox();
+            this.block_ltex = new System.Windows.Forms.PictureBox();
+            this.ltex_l = new System.Windows.Forms.Label();
+            this.lbt_fp_tb = new System.Windows.Forms.TextBox();
+            this.lbt_fn_tb = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
@@ -92,6 +95,7 @@ namespace custom_block_c
             ((System.ComponentModel.ISupportInitialize)(this.pv_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.it_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mss_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block_ltex)).BeginInit();
             this.SuspendLayout();
             // 
             // bn_tb
@@ -685,26 +689,16 @@ namespace custom_block_c
             0,
             0});
             // 
-            // lb_btn
-            // 
-            this.lb_btn.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.lb_btn.ForeColor = System.Drawing.Color.White;
-            this.lb_btn.Location = new System.Drawing.Point(747, 389);
-            this.lb_btn.Name = "lb_btn";
-            this.lb_btn.Size = new System.Drawing.Size(60, 60);
-            this.lb_btn.TabIndex = 51;
-            this.lb_btn.UseVisualStyleBackColor = true;
-            this.lb_btn.Click += new System.EventHandler(this.lb_btn_Click);
-            // 
             // lb_cb
             // 
-            this.lb_cb.AutoSize = true;
-            this.lb_cb.Location = new System.Drawing.Point(1051, 15);
+            this.lb_cb.Appearance = System.Windows.Forms.Appearance.Button;
+            this.lb_cb.Image = global::custom_block_c.Properties.Resources.file_btn;
+            this.lb_cb.Location = new System.Drawing.Point(595, 230);
             this.lb_cb.Name = "lb_cb";
-            this.lb_cb.Size = new System.Drawing.Size(15, 14);
+            this.lb_cb.Size = new System.Drawing.Size(60, 60);
             this.lb_cb.TabIndex = 52;
             this.lb_cb.UseVisualStyleBackColor = true;
-            this.lb_cb.Visible = false;
+            this.lb_cb.CheckedChanged += new System.EventHandler(this.lb_cb_CheckedChanged);
             // 
             // bs_cb
             // 
@@ -756,18 +750,65 @@ namespace custom_block_c
             this.bt_cb.TabIndex = 56;
             this.bt_cb.UseVisualStyleBackColor = true;
             // 
+            // block_ltex
+            // 
+            this.block_ltex.BackColor = System.Drawing.Color.Gray;
+            this.block_ltex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.block_ltex.Location = new System.Drawing.Point(514, 369);
+            this.block_ltex.Name = "block_ltex";
+            this.block_ltex.Size = new System.Drawing.Size(80, 80);
+            this.block_ltex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.block_ltex.TabIndex = 57;
+            this.block_ltex.TabStop = false;
+            this.block_ltex.Visible = false;
+            this.block_ltex.DragDrop += new System.Windows.Forms.DragEventHandler(this.block_ltex_DragDrop);
+            this.block_ltex.DragEnter += new System.Windows.Forms.DragEventHandler(this.block_ltex_DragEnter);
+            // 
+            // ltex_l
+            // 
+            this.ltex_l.AllowDrop = true;
+            this.ltex_l.AutoSize = true;
+            this.ltex_l.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.ltex_l.ForeColor = System.Drawing.Color.White;
+            this.ltex_l.Location = new System.Drawing.Point(473, 373);
+            this.ltex_l.Name = "ltex_l";
+            this.ltex_l.Size = new System.Drawing.Size(35, 28);
+            this.ltex_l.TabIndex = 58;
+            this.ltex_l.Text = "上面\r\n底面";
+            this.ltex_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ltex_l.Visible = false;
+            // 
+            // lbt_fp_tb
+            // 
+            this.lbt_fp_tb.Location = new System.Drawing.Point(1072, 137);
+            this.lbt_fp_tb.Name = "lbt_fp_tb";
+            this.lbt_fp_tb.Size = new System.Drawing.Size(100, 19);
+            this.lbt_fp_tb.TabIndex = 59;
+            this.lbt_fp_tb.Visible = false;
+            // 
+            // lbt_fn_tb
+            // 
+            this.lbt_fn_tb.Location = new System.Drawing.Point(1072, 162);
+            this.lbt_fn_tb.Name = "lbt_fn_tb";
+            this.lbt_fn_tb.Size = new System.Drawing.Size(100, 19);
+            this.lbt_fn_tb.TabIndex = 60;
+            this.lbt_fn_tb.Visible = false;
+            // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.lbt_fn_tb);
+            this.Controls.Add(this.lbt_fp_tb);
+            this.Controls.Add(this.ltex_l);
+            this.Controls.Add(this.block_ltex);
             this.Controls.Add(this.bt_cb);
             this.Controls.Add(this.bfs_l);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bs_cb);
             this.Controls.Add(this.lb_cb);
-            this.Controls.Add(this.lb_btn);
             this.Controls.Add(this.mss_nud);
             this.Controls.Add(this.mss_l);
             this.Controls.Add(this.ifs_l);
@@ -828,6 +869,7 @@ namespace custom_block_c
             ((System.ComponentModel.ISupportInitialize)(this.pv_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.it_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mss_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block_ltex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -881,12 +923,15 @@ namespace custom_block_c
         private Label ifs_l;
         private Label mss_l;
         private NumericUpDown mss_nud;
-        private Button lb_btn;
         private CheckBox lb_cb;
         private CheckBox bs_cb;
         private Label label1;
         private Label bfs_l;
         private CheckBox bt_cb;
+        private PictureBox block_ltex;
+        private Label ltex_l;
+        private TextBox lbt_fp_tb;
+        private TextBox lbt_fn_tb;
     }
 }
 
