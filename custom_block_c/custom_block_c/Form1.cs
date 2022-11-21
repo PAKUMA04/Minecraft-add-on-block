@@ -51,10 +51,15 @@ namespace custom_block_c
                     tn_tb.Text = $"{block_name}";//元画像をブロック名に改名
                 }
                 string tex_name = tn_tb.Text;//ブロックテクスチャ画像名取得
+                string fp_lbt = lbt_fp_tb.Text;//柱ブロックテクスチャ取得
                 if (lb_cb.Checked == true)
                 {
-                    string fp_lbt = lbt_fp_tb.Text;
+                    if (bt_cb.Checked == true)
+                    {
+                        lbt_fn_tb.Text = $"{block_name}_t";//元画像をブロック名に改名b
+                    }
                 }
+                string lbt_name = lbt_fn_tb.Text;//柱ブロックテクスチャ画像名取得
                 string block_tl = tl_tb.Text;//ブロックの表示名
                 string block_le = le_nud.Text;//明るさ
                 string block_dt = dt_nud.Text;//破壊時間
@@ -63,6 +68,13 @@ namespace custom_block_c
                 if (System.IO.File.Exists(fp_bt) == false)//画像の存在を確認
                 {
                     File.Copy($@"{fp_t}", $@"{fp_bt}");//画像が無かったらコピー
+                }
+                if (lb_cb.Checked == true)
+                {
+                    if (System.IO.File.Exists(fp_lbt) == false)//柱ブロックの画像の存在を確認
+                    {
+                        File.Copy($@"{fp_t}", $@"{fp_lbt}");//柱ブロック画像が無かったらコピー
+                    }
                 }
                 //
                 //block.json生成
@@ -101,7 +113,6 @@ namespace custom_block_c
                 //terrain_texture.jsonの編集
                 //
                 string fp_tj = $"{fp_res}/textures/terrain_texture.json";//terrain_texture.jsonパス
-                string tex_tj = $"\"}},\n    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";//追加内容
                 if (System.IO.File.Exists(fp_tj))//terrain_textureの存在を確認
                 {
                     StreamReader sr_od_tj = new StreamReader(fp_tj);
@@ -110,8 +121,9 @@ namespace custom_block_c
                     File.Delete(fp_tj);
                     using (FileStream fs_tj = File.Create(fp_tj)) ;
                     System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
+                    string tex_tj = $"\"}},\n    \"{tex_name}\":{{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";//追加内容
                     sb_tj.Replace("\"}\n  }", $"{tex_tj}");
-                    if (lb_cb.Checked == true)
+                    if (lb_cb.Checked == true)//柱ブロック有効確認
                     {
                         string lb_tj = $"\"}},\n    \"{lbt_name}\":{{\"textures\":\"textures/blocks/{lbt_name}\"}}\n  }}";
                         sb_tj.Replace("\"}\n  }", $"{lb_tj}");
@@ -120,21 +132,22 @@ namespace custom_block_c
                         tj_w.Write(texture_json);
                         tj_w.Close();
                     }
-                    else
+                    else//柱ブロック無効
                     {
-                        string texture_json = sb_tj.ToString();
-                        StreamWriter tj_w = new StreamWriter(fp_tj, true);
-                        tj_w.Write(texture_json);
-                        tj_w.Close();
+                        string texture_json = sb_tj.ToString();//
+                        StreamWriter tj_w = new StreamWriter(fp_tj, true);//書き込み内容
+                        tj_w.Write(texture_json);//書き込み
+                        tj_w.Close();//streamwriter閉じる
                     }
                 }
-                else
+                else//terrain_texture.jsonを新規作成
                 {
-                    using (FileStream fs_tj = File.Create(fp_tj)) ;
+                    using (FileStream fs_tj = File.Create(fp_tj)) ;//
                     StreamReader sr_od_tj = new StreamReader("original_data/terrain_texture.json");
                     string od_tj = sr_od_tj.ReadToEnd();
                     sr_od_tj.Close();
                     System.Text.StringBuilder sb_tj = new System.Text.StringBuilder(od_tj);
+                    string tex_tj = $"    \"{tex_name}\": {{\"textures\":\"textures/blocks/{tex_name}\"}}\n  }}";//追加内容
                     sb_tj.Replace("pack_name", $"{pack_name}");
                     sb_tj.Replace("  }", $"{tex_tj}");
                     if (lb_cb.Checked == true)
@@ -269,7 +282,7 @@ namespace custom_block_c
             string od_mb = sr_od_mb.ReadToEnd();
             System.Text.StringBuilder sb_mb = new System.Text.StringBuilder(od_mb);
             sb_mb.Replace("pack_name", $"{pack_name}");
-            sb_mb.Replace("pack_desc",$"{pack_desc}");
+            sb_mb.Replace("pack_desc", $"{pack_desc}");
             sb_mb.Replace("pack_ver", $"{pack_ver}");
             sb_mb.Replace("uuid_1_b", $"{uuid_1_b}");
             sb_mb.Replace("uuid_2_b", $"{uuid_2_b}");
@@ -295,9 +308,9 @@ namespace custom_block_c
             StreamWriter sw_mr = new StreamWriter(fp_mr, true);
             sw_mr.Write(manifest_res);
             sw_mr.Close();
-            
+
             //メッセージ
-            MessageBox.Show("ファイルが生成されました","ファイル生成", MessageBoxButtons.OK);
+            MessageBox.Show("ファイルが生成されました", "ファイル生成", MessageBoxButtons.OK);
         }
         private void block_tex_DragEnter(object sender, DragEventArgs e)
         {
