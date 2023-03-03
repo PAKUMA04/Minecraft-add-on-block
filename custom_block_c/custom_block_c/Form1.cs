@@ -19,6 +19,7 @@ namespace custom_block_c
     {
         public main_f()
         {
+            this.Load += main_load;
             InitializeComponent();
             block_tex.AllowDrop = true;
             pi_pb.AllowDrop = true;
@@ -27,7 +28,12 @@ namespace custom_block_c
         }
         public void done_btn_Click(object sender, EventArgs e)
         {
-            string fp_folder = folder_tb.Text;
+            if(string.IsNullOrEmpty(folder_tb.Text) == true)
+            {
+                MessageBox.Show("保存先のファイルを指定してください", "警告");
+                return;
+            }
+            string fp_folder = folder_tb.Text;//保存先フォルダーパス
             Directory.CreateDirectory($"{fp_folder}/custom_block");//保存フォルダ作成
             string pack_name = pn_tb.Text;//パック名取得
             string fp_beh = $"{fp_folder}/custom_block/{pack_name}_b";//ビヘイビアーファイルパス
@@ -45,12 +51,23 @@ namespace custom_block_c
                 Directory.CreateDirectory(fp_rtb);//ブロックテクスチャフォルダ作成
                 string block_name = bn_tb.Text;//ブロック名取得
                 string block_id = $"{name_space}:{block_name}";//ブロックID生成
-                string fp_t = bt_tb.Text;//ブロックテクスチャ元画像パス
+                if(fp_cb.Items.Count < 2)
+                {
+                    MessageBox.Show("ブロックのテクスチャが指定されていません。", "警告", MessageBoxButtons.OK);
+                    return;
+                }
+                fp_cb.SelectedIndex = 1;//ブロックテクスチャパスにリストを設定
+                string fp_t = fp_cb.SelectedItem.ToString();//ブロックテクスチャ元画像パス
                 if (bt_cb.Checked == true)
                 {
                     tn_tb.Text = $"{block_name}";//元画像をブロック名に改名
                 }
                 string tex_name = tn_tb.Text;//ブロックテクスチャ画像名取得
+                if(string.IsNullOrEmpty(tn_tb.Text) == true)
+                {
+                    MessageBox.Show("ブロックの画像が指定されていません。", "警告");
+                    return;
+                }
                 string fp_lbt = lbt_fp_tb.Text;//柱ブロックテクスチャ取得
                 if (lb_cb.Checked == true)
                 {
@@ -65,6 +82,11 @@ namespace custom_block_c
                 string block_dt = dt_nud.Text;//破壊時間
                 string block_er = er_nud.Text;//爆発耐性
                 string fp_bt = $"{fp_rtb}\\{tex_name}.png";//画像パス
+                if(string.IsNullOrEmpty(fp_bt) == true)
+                {
+                    MessageBox.Show("ブロックのテクスチャを選択してください", "警告", MessageBoxButtons.OK);
+                    return;
+                }
                 if (System.IO.File.Exists(fp_bt) == false)//画像の存在を確認
                 {
                     File.Copy($@"{fp_t}", $@"{fp_bt}");//画像が無かったらコピー
@@ -261,16 +283,10 @@ namespace custom_block_c
             //
             string pack_desc = pd_tb.Text;//パック説明
             string pack_ver = pv_nud.Text;//パックバージョン
-            string fp_od_pi = pi_tb.Text;//pack_icon元画像パス
-            string fp_pi_b = $"{fp_beh}\\pack_icon.png";//pack_icon保存先パス
-            if (System.IO.File.Exists(fp_pi_b) == false)//ビヘイビアーpack_icon
+            if (pi_pb.Image == null)
             {
-                File.Copy($@"{fp_od_pi}", $@"{fp_pi_b}");
-            }
-            string fp_pi_r = $"{fp_res}\\pack_icon.png";
-            if (System.IO.File.Exists(fp_pi_r) == false)//リソースpack_icon
-            {
-                File.Copy($@"{fp_od_pi}", $@"{fp_pi_r}");
+                MessageBox.Show("パックアイコンの画像を指定してください。", "警告", MessageBoxButtons.OK);
+                return;
             }
             string fp_mb = $"{fp_beh}/manifest.json";
             using (FileStream fs_mb = File.Create(fp_mb)) ;
@@ -327,9 +343,9 @@ namespace custom_block_c
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             for (int i = 0; i < files.Length; i++)
             {
-                string texpash = files[i];
-                bt_tb.Text = texpash;
-                tn_tb.Text = Path.GetFileNameWithoutExtension(texpash);
+                string block_op = files[i];
+                fp_cb.Items.Insert(1,block_op);
+                tn_tb.Text = Path.GetFileNameWithoutExtension(block_op);
             }
         }
         private void pi_pb_DragEnter(object sender, DragEventArgs e)
@@ -347,9 +363,9 @@ namespace custom_block_c
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             for (int i = 0; i < files.Length; i++)
             {
-                string fp_pi = files[i];
-                pi_tb.Text = fp_pi;
+                fp_cb.Items.Insert(0, files[i]);//パックアイコン元データパス
             }
+
         }
         private void it_pb_DragEnter(object sender, DragEventArgs e)
         {
@@ -400,7 +416,29 @@ namespace custom_block_c
             folder.ShowNewFolderButton = true;
             if (folder.ShowDialog() == DialogResult.OK)
             {
-                folder_tb.Text=folder.SelectedPath;
+                folder_tb.Text = folder.SelectedPath;
+            }
+        }
+
+        private void block_tex_click(object sender, EventArgs e)
+        {
+            OpenFileDialog bt_ofd = new OpenFileDialog();
+            bt_ofd.InitialDirectory = @"C:\User\Pictures\";
+            bt_ofd.Title = "ブロックのテクスチャを選択してください";
+            if(bt_ofd.ShowDialog() == DialogResult.OK)
+            {
+                string block_op = bt_ofd.FileName;
+                block_tex.ImageLocation = block_op;
+                pi_pb.Image = new Bitmap(block_op);
+                if (fp_cb.Items.Count > 1)
+                {
+                    fp_cb.Items.Insert(1, block_op);
+                    tn_tb.Text = Path.GetFileNameWithoutExtension(block_op);
+                }
+                else
+                {
+                    MessageBox.Show("pack_iconを選択してください。", "警告", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -440,6 +478,42 @@ namespace custom_block_c
                 ltex_l.Visible = false;
                 block_ltex.Visible = false;
             }
+        }
+
+        private void pi_pb_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog pi_ofd = new OpenFileDialog();
+            pi_ofd.InitialDirectory = @"C:\User\Pictures\";
+            pi_ofd.Title = "パックアイコンの画像を選択してください";
+            if (pi_ofd.ShowDialog() == DialogResult.OK)
+            {
+                string pack_icon_pash = pi_ofd.FileName;//パックアイコン画像ファイルパス
+                File.Copy($@"{pack_icon_pash}", @"temp\behavior\pack_icon.png");//ビヘイビアーにコピー
+                File.Copy($@"{pack_icon_pash}", @"temp\resource\pack_icon.png");//リソースにコピー
+                pi_pb.ImageLocation = pack_icon_pash;//ソフト側に反映
+                pi_pb.Image = new Bitmap(pack_icon_pash);//picboxにコピーしたpack_iconを反映
+            }
+        }
+        private void folder_open_btn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(folder_tb.Text))// 保存先のフォルダー見るボタン
+            {
+                MessageBox.Show("保存先のフォルダーが指定されていません。", "警告", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                string sf_fp = folder_tb.Text;
+                System.Diagnostics.Process.Start(sf_fp);
+            }
+        }
+
+        private void main_load(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory(@"temp");//tempフォルダ作成
+            Directory.CreateDirectory(@"temp\behavior");//behavior.tempファイル作成
+            Directory.CreateDirectory(@"temp\resource");//resource.tempファイル作成
+
         }
     }
 }

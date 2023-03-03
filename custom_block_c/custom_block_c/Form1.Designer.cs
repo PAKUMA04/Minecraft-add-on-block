@@ -56,7 +56,6 @@ namespace custom_block_c
             this.pi_pb = new System.Windows.Forms.PictureBox();
             this.pn_l = new System.Windows.Forms.Label();
             this.pn_tb = new System.Windows.Forms.TextBox();
-            this.pi_tb = new System.Windows.Forms.TextBox();
             this.pi_l = new System.Windows.Forms.Label();
             this.pd_l = new System.Windows.Forms.Label();
             this.pd_tb = new System.Windows.Forms.TextBox();
@@ -86,6 +85,9 @@ namespace custom_block_c
             this.ltex_l = new System.Windows.Forms.Label();
             this.lbt_fp_tb = new System.Windows.Forms.TextBox();
             this.lbt_fn_tb = new System.Windows.Forms.TextBox();
+            this.block_lb = new System.Windows.Forms.ListBox();
+            this.fp_cb = new System.Windows.Forms.ComboBox();
+            this.folder_open_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dt_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.le_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.er_nud)).BeginInit();
@@ -312,12 +314,14 @@ namespace custom_block_c
             // 
             this.block_tex.BackColor = System.Drawing.Color.Gray;
             this.block_tex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.block_tex.Cursor = System.Windows.Forms.Cursors.Hand;
             this.block_tex.Location = new System.Drawing.Point(387, 369);
             this.block_tex.Name = "block_tex";
             this.block_tex.Size = new System.Drawing.Size(80, 80);
             this.block_tex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.block_tex.TabIndex = 18;
             this.block_tex.TabStop = false;
+            this.block_tex.Click += new System.EventHandler(this.block_tex_click);
             this.block_tex.DragDrop += new System.Windows.Forms.DragEventHandler(this.block_tex_DragDrop);
             this.block_tex.DragEnter += new System.Windows.Forms.DragEventHandler(this.block_tex_DragEnter);
             // 
@@ -403,6 +407,7 @@ namespace custom_block_c
             this.pi_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pi_pb.TabIndex = 27;
             this.pi_pb.TabStop = false;
+            this.pi_pb.Click += new System.EventHandler(this.pi_pb_Click);
             this.pi_pb.DragDrop += new System.Windows.Forms.DragEventHandler(this.pi_pb_DragDrop);
             this.pi_pb.DragEnter += new System.Windows.Forms.DragEventHandler(this.pi_pb_DragEnter);
             // 
@@ -426,14 +431,6 @@ namespace custom_block_c
             this.pn_tb.Name = "pn_tb";
             this.pn_tb.Size = new System.Drawing.Size(200, 21);
             this.pn_tb.TabIndex = 29;
-            // 
-            // pi_tb
-            // 
-            this.pi_tb.Location = new System.Drawing.Point(1072, 12);
-            this.pi_tb.Name = "pi_tb";
-            this.pi_tb.Size = new System.Drawing.Size(100, 19);
-            this.pi_tb.TabIndex = 30;
-            this.pi_tb.Visible = false;
             // 
             // pi_l
             // 
@@ -693,7 +690,7 @@ namespace custom_block_c
             // 
             this.lb_cb.Appearance = System.Windows.Forms.Appearance.Button;
             this.lb_cb.Image = global::custom_block_c.Properties.Resources.file_btn;
-            this.lb_cb.Location = new System.Drawing.Point(595, 230);
+            this.lb_cb.Location = new System.Drawing.Point(600, 231);
             this.lb_cb.Name = "lb_cb";
             this.lb_cb.Size = new System.Drawing.Size(60, 60);
             this.lb_cb.TabIndex = 52;
@@ -719,7 +716,7 @@ namespace custom_block_c
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(259, 501);
+            this.label1.Location = new System.Drawing.Point(221, 504);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 14);
             this.label1.TabIndex = 54;
@@ -794,12 +791,47 @@ namespace custom_block_c
             this.lbt_fn_tb.TabIndex = 60;
             this.lbt_fn_tb.Visible = false;
             // 
+            // block_lb
+            // 
+            this.block_lb.BackColor = System.Drawing.Color.Gray;
+            this.block_lb.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.block_lb.ForeColor = System.Drawing.Color.White;
+            this.block_lb.FormattingEnabled = true;
+            this.block_lb.HorizontalScrollbar = true;
+            this.block_lb.Location = new System.Drawing.Point(666, 231);
+            this.block_lb.Name = "block_lb";
+            this.block_lb.ScrollAlwaysVisible = true;
+            this.block_lb.Size = new System.Drawing.Size(141, 147);
+            this.block_lb.TabIndex = 61;
+            // 
+            // fp_cb
+            // 
+            this.fp_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fp_cb.FormattingEnabled = true;
+            this.fp_cb.Location = new System.Drawing.Point(12, 12);
+            this.fp_cb.Name = "fp_cb";
+            this.fp_cb.Size = new System.Drawing.Size(121, 20);
+            this.fp_cb.TabIndex = 63;
+            // 
+            // folder_open_btn
+            // 
+            this.folder_open_btn.Location = new System.Drawing.Point(455, 504);
+            this.folder_open_btn.Name = "folder_open_btn";
+            this.folder_open_btn.Size = new System.Drawing.Size(32, 32);
+            this.folder_open_btn.TabIndex = 64;
+            this.folder_open_btn.Text = "button1";
+            this.folder_open_btn.UseVisualStyleBackColor = true;
+            this.folder_open_btn.Click += new System.EventHandler(this.folder_open_btn_Click);
+            // 
             // main_f
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.folder_open_btn);
+            this.Controls.Add(this.fp_cb);
+            this.Controls.Add(this.block_lb);
             this.Controls.Add(this.lbt_fn_tb);
             this.Controls.Add(this.lbt_fp_tb);
             this.Controls.Add(this.ltex_l);
@@ -829,7 +861,6 @@ namespace custom_block_c
             this.Controls.Add(this.pd_tb);
             this.Controls.Add(this.pd_l);
             this.Controls.Add(this.pi_l);
-            this.Controls.Add(this.pi_tb);
             this.Controls.Add(this.pn_tb);
             this.Controls.Add(this.pn_l);
             this.Controls.Add(this.pi_pb);
@@ -902,7 +933,6 @@ namespace custom_block_c
         private PictureBox pi_pb;
         private Label pn_l;
         private TextBox pn_tb;
-        private TextBox pi_tb;
         private Label pi_l;
         private Label pd_l;
         private TextBox pd_tb;
@@ -932,6 +962,9 @@ namespace custom_block_c
         private Label ltex_l;
         private TextBox lbt_fp_tb;
         private TextBox lbt_fn_tb;
+        private ListBox block_lb;
+        private ComboBox fp_cb;
+        private Button folder_open_btn;
     }
 }
 
